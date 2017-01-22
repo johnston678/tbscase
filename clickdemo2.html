@@ -1,6 +1,6 @@
 <html>
 <body>
-<p>===========click funny go to baidu use event click========================</p>
+<p>===========click funny go to baidu use MouseEvents click========================</p>
 <div id="funny" style="width:100px;height:100px;background-color: #5b5a5a">
     funny
 </div>
@@ -33,13 +33,9 @@ console
                 /*
                 var event = new Event('click', {bubbles: true});
                 el.dispatchEvent(event);
-
-                 var event = document.createEvent("MouseEvents");
-                 event.initMouseEvent("click", true, true, window, 1, 0, 0, 0, 0, false, false, false, false, 0, null);
-                 el.dispatchEvent(event);
                 */
-                //simulateClick(el); //success
-                simulateClick2(el); //fail
+                simulateClick(el);
+                //simulateClick2(el);
                 //document.body.removeChild(el);
             }, false);
         });
