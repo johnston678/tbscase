@@ -1,0 +1,150 @@
+
+<!DOCTYPE html>
+<head>
+    <meta charset='utf-8'/>
+    <title>layabox ar demo</title>
+    <meta name='apple-mobile-web-app-capable' content='yes' />
+    <meta name='full-screen' content='true' />
+    <meta name='screen-orientation' content='portrait' />
+    <meta name='x5-fullscreen' content='true' />
+    <meta name='360-fullscreen' content='true' />
+    <meta http-equiv='expires' content='0' />
+    <meta name='laya' logoimg='logo.png' logobkcolor='#ffffff' screenorientation='landscape' cacheid='fffffffff' />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+</head>
+<script type="text/javascript" src="../UtilJS/cookiemanager.js"></script>
+<body style="background-color: #FFFFFF;">
+<video id="video" style="position:absolute;left:0px;top:0px;z-index:-1" width="480" height="640" autoplay></video>
+
+	<script src="js/libs/laya.core.js"></script>
+    <script src="js/libs/laya.webgl.js"></script>
+    <script src="js/libs/laya.filter.js"></script>
+    <script src="js/libs/laya.particle.js"></script>
+    <script src="js/libs/laya.ani.js"></script>
+    <script src="js/libs/laya.ui.js"></script>
+    <script src="js/libs/laya.html.js"></script>
+    <script src="js/libs/laya.tiledmap.js"></script>
+	<script src="js/libs/laya.d3.js"></script>
+    <script src="js/common/CameraMoveScript.js"></script>
+    <script src="js/common/VRCameraMoveScript.js"></script>
+    <script src="js/common/ProjectileParticle.js"></script>
+    <script src="js/common/GlitterStripSampler.js"></script>
+    <script src="js/common/SkySampleScript.js"></script>
+    
+    <script>
+   (function openRTC() {
+	var m_exArray = [];
+	window.URL = window.URL || window.webkitURL || window.msURL || window.oURL;
+	navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia;
+	
+	var m_video = document.querySelector('video'),
+	m_permited = false;
+
+	function successsCallback(stream) {
+        console.log("innerWidth:" + window.innerWidth + ", " + window.innerHeight);
+
+	    m_permited = true;
+	    m_video.src = window.URL.createObjectURL(stream) || stream;
+	}
+
+	function accessLocalWebCam() {
+	    try {
+	        navigator.getUserMedia({
+	            video: {
+                    //width:980, height:1280,
+	                optional: [{
+	                    sourceId: m_exArray[1]
+	                }],
+	                mandatory: { "minWidth":640, "minHeight":480, "minFrameRate":20}
+	            }
+	        },
+	        successsCallback,
+	        function(err) {
+	        	//alert("err:" + err);
+	            console.log("accessLocalWebCam getUserMedia error:" + err);
+	        });
+	    } catch(err) {
+	    	//alert("accessLocalWebCam err:" + err);
+	        console.log("accessLocalWebCam error:" + err);
+	    }
+	}
+
+	function gotSources(sourceInfos) {
+	    for (var i = 0; i != sourceInfos.length; ++i) {
+	        var sourceInfo = sourceInfos[i];
+	        if (sourceInfo.kind === 'audio') {} else if (sourceInfo.kind === 'video') {
+	            m_exArray.push(sourceInfo.id);
+	        } else {
+	        	//alert('Some other kind of source: ', sourceInfo);
+	            console.log('Some other kind of source: ', sourceInfo);
+	        }
+	    }
+	    accessLocalWebCam();
+	}
+	
+	if (!navigator.getUserMedia) {
+	    console.log('getUserMedia fail');
+	}
+
+	if (typeof MediaStreamTrack === 'undefined') {
+	    //alert('This browser does not support MediaStreamTrack.\n\nTry Chrome Canary.');
+	} else {
+		try {
+	    	MediaStreamTrack.getSources(gotSources);
+	    } catch (err) {
+	    	//alert("AR demo - err:" + err);
+	    }
+	}
+
+})(); 
+    
+Laya3D.init(320*2, 240*2, true, true);
+Laya.stage.scaleMode = Laya.Stage.SCALE_FULL;
+Laya.stage.screenMode = Laya.Stage.SCREEN_NONE;
+Laya.stage.bgColor = "none";
+Laya.Stat.show();
+
+var scene = Laya.stage.addChild(new Laya.Scene());
+
+var camera = (scene.addChild(new Laya.Camera(0, 0.3, 2000)));
+camera.transform.translate(new Laya.Vector3(0, 0, 1.0));
+camera.transform.rotate(new Laya.Vector3(0, 0, 0), true, false);
+//camera.projectionMatrix = new Laya.Matrix4x4(2.53, 0.0, 0.0, 0.0, 0.0, 3.32, 0.0, 0.0, -0.08, -0.10, -1.00, -1.0, 0.0, 0.0, -2.0004, 0.0);
+camera.clearColor = new Laya.Vector4(0.0, 0.0, 0.0, 0.0);
+
+var directionLight = scene.addChild(new Laya.DirectionLight());
+directionLight.direction = new Laya.Vector3(0, -0.8, -1);
+directionLight.ambientColor = new Laya.Vector3(0.7, 0.6, 0.6);
+directionLight.specularColor = new Laya.Vector3(2.0, 2.0, 1.6);
+directionLight.diffuseColor = new Laya.Vector3(1, 1, 1);
+scene.shadingMode = Laya.BaseScene.PIXEL_SHADING;
+
+var meshSprite3D = new Laya.MeshSprite3D(Laya.Mesh.load("res/dude/dude-him.lm"));
+
+var scalingMatrix = new Laya.Matrix4x4();
+Laya.Matrix4x4.createScaling(new Laya.Vector3(76, 76, 76), scalingMatrix);
+
+var det = 1;
+var matrixTemp = new Laya.Matrix4x4();
+matrixTemp.elements = new Float32Array([0.9487363, 0.0389651, -0.31365886, 0.0, -0.034646716, 0.99921846, 0.018993521, 0.0, 0.31414956, -0.0071491417, 0.9493465, 0.0, 
+-52.6/det, -20.09765/det, -422.5393/det, 1.0]);
+
+var matrix = new Laya.Matrix4x4();
+Laya.Matrix4x4.multiply(matrixTemp, scalingMatrix, matrix);
+
+meshSprite3D.transform.localMatrix = matrix;
+
+var skinMesh = scene.addChild(meshSprite3D);
+//skinMesh.transform.localRotationEuler = new Laya.Vector3(0, 3.14, 0);
+var skinAni = skinMesh.addComponent(Laya.SkinAnimations);
+skinAni.templet = Laya.AnimationTemplet.load("res/dude/dude.ani");
+skinAni.player.play();
+
+
+    
+    </script>
+<script>
+    closeWindowAndSetCookieAfterDelayTime(testTimeOut, layaboxar_avg);
+</script>
+    </body>
+</html>
