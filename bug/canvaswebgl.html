@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>
+    webgl and canvas demo
+  </title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+</head>
+<body>
+<p><button onclick="initCanvas2D()">initCanvas2D</button></p>
+<p>---------------------------------------</p>
+<p>---------------------------------------</p>
+<p><button onclick="startGLDraw()">startGLDraw</button></p>
+<p>---------------------------------------</p>
+<p>---------------------------------------</p>
+<p><button onclick="stopGLDraw()">stopGLDraw</button></p>
+<canvas id="canvas" width="400" height="400">
+  Your browser does not support the HTML5 canvas tag.
+</canvas>
+<script>
+  var canvas = document.getElementById("canvas");
+  var ctx = null;
+  var gl = null;
+  var timer = null;
+  var count = 0;
+
+  function drawGL() {
+    if(count%2==0) {
+      if(gl)
+        gl.clearColor(255,0,0,255);
+    } else {
+      if(gl)
+        gl.clearColor(0,255,0,255);
+    }
+    if(++count > 10000)
+      count=0;
+    if(gl)
+      gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT)
+  }
+
+  function startGLDraw() {
+    if (null == gl)
+      gl = canvas.getContext("webgl",{preserveDrawingBuffer:1});
+
+    if(null==timer) {
+      timer = setInterval(drawGL,1000/60.0);
+    }
+  }
+  
+  function stopGLDraw() {
+    if(timer) {
+      clearInterval(timer);
+      timer = null;
+    }
+  }
+
+  function initCanvas2D() {
+    if(ctx == null)
+      ctx = canvas.getContext("2d");
+    if(ctx)
+      ctx.fillRect(0, 0, 300, 300);
+  }
+</script>
+</body>
+</html>
+
+
