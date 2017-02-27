@@ -119,8 +119,10 @@ function backTohomeUrl() {
 	var avg = getAvgValue();
 	var pageCookieName = m_cookieName.replace("_avg","");
     setCookie(pageCookieName+"_avg",avg);
-    setCookie(pageCookieName+"_max",Math.round(max_value));
-    setCookie(pageCookieName+"_min",Math.round(min_value));
+    //setCookie(pageCookieName+"_max",Math.round(max_value));
+    //setCookie(pageCookieName+"_min",Math.round(min_value));
+	setCookie(pageCookieName+"_max",max_value.toFixed(2));
+	setCookie(pageCookieName+"_min",min_value.toFixed(2));
     console.log("url:"+pageCookieName+" avg:"+avg+" max_value:"+max_value+ " min_value:"+min_value);
     window.history.back();
 }
@@ -196,12 +198,13 @@ function addValue(value)
 
 function getAvgValue()
 {
-        var average = 0;
-		var length = valueArray.length;
-		for (var i=0; i < length; i++){
-			average += valueArray[i];
-		}
-		return Math.round(average / length);	
+	var average = 0;
+	var length = valueArray.length;
+	for (var i=0; i < length; i++) {
+	average += valueArray[i];
+	}
+	//return Math.round(average / length);	
+	return (average/length).toFixed(2);
 }
 
 var drawIndex = 1;
