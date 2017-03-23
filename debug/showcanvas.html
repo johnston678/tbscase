@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Show Canvas toDataURL Result</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+</head>
+<body>
+<img id="toDataURLID" src=""/>
+<script>
+    //1.postMessage
+    //inject js
+    var showcanvaswin = null;
+    function showCanvasDataForMessage(canvasEle)
+    {
+        var image = null;
+        if(canvasEle)
+            image= canvasEle.toDataURL("image/png");
+        if(showcanvaswin==null)
+            showcanvaswin = window.open("http://whmgc.cn/debug/showcanvas.html");
+        showcanvaswin.postMessage(image, 'http://whmgc.cn/debug/showcanvas.html');
+    }
+
+    //show canvas toDataURL data
+    var toDataURLID = document.getElementById("toDataURLID");
+    window.addEventListener('message',function(event) {
+        //console.log(event.data);
+        toDataURLID.src=event.data;
+    });
+
+    //2.localStorage
+    //inject js
+    function showCanvasDataForLocalStorage(canvasEle)
+    {
+        var image = null;
+        if(canvasEle)
+            image= canvasEle.toDataURL("image/png");
+        localStorage.setItem('toDataURLSrc', image);
+    }
+
+    window.addEventListener('storage', function(e) {
+        if (e.key === 'toDataURLSrc') {
+            var toDataURLSrc = localStorage.getItem('toDataURLSrc');
+            //console.log(toDataURLSrc);
+            toDataURLID.src=toDataURLSrc;
+        }
+    }, false);
+
+</script>
+</body>
+</html>

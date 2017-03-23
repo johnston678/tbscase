@@ -59,7 +59,7 @@ function initFPS(){
 	requestAnimationFrame(loopFPS);
 }
 
-//1.js console 注入如下insertJS function
+//1.js console insertJS function
 //2.insertJS("insertFPS","http://whmgc.cn/debug/fps.js");
 //3.initFPS();
 /*
