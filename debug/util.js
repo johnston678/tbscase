@@ -59,8 +59,44 @@ function initFPS(){
 	requestAnimationFrame(loopFPS);
 }
 
+function insertAllEvent(eventEle) {
+	var beginTime = 0;
+	var currentTime = 0;
+	function handleEvent(event)
+	{
+		currentTime = (new Date()).getTime();
+		if("touchstart"==event.type)
+		{
+			if(currentTime - beginTime > 1000)
+			{
+				beginTime = (new Date()).getTime();
+			}
+		}
+		console.log(" EventTargetId:"+event.target.id+" EventType:" + event.type + " CostTime:" + (currentTime-beginTime) + "ms" +" pageX:"+event.touches[0].pageX+" pageY:"+event.touches[0].pageY+" screenX:"+event.touches[0].screenX+" screenY:"+event.touches[0].screenY);
+	}
+	eventEle.addEventListener("touchstart", handleEvent, false);
+	eventEle.addEventListener("touchmove", handleEvent, false);
+	eventEle.addEventListener("touchend", handleEvent, false);
+	eventEle.addEventListener("touchcancel", handleEvent, false);
+	eventEle.addEventListener("mousemove", handleEvent, false);
+	eventEle.addEventListener("mousedown", handleEvent, false);
+	eventEle.addEventListener("mouseup", handleEvent, false);
+	eventEle.addEventListener("mouseover", handleEvent, false);
+	eventEle.addEventListener("mouseout", handleEvent, false);
+	eventEle.addEventListener("click", handleEvent, false);
+	eventEle.addEventListener("tap", handleEvent, false);
+	eventEle.addEventListener("singleTap", handleEvent, false);
+	eventEle.addEventListener("doubleTap", handleEvent, false);
+	eventEle.addEventListener("longTap", handleEvent, false);
+	eventEle.addEventListener("wx-tap", handleEvent, false);
+	eventEle.addEventListener("wx-singleTap", handleEvent, false);
+	eventEle.addEventListener("wx-doubleTap", handleEvent, false);
+	eventEle.addEventListener("wx-longTap", handleEvent, false);
+}
+
 //1.js console insertJS function
-//2.insertJS("insertFPS","http://whmgc.cn/debug/fps.js");
+//2.insertJS("insertFPS","http://whmgc.cn/debug/util.js");
+// or insertJS("insertFPS","https://johnston678.github.io/tbscase/debug/util.js");
 //3.initFPS();
 /*
 function insertJS(jsid,jsurl){

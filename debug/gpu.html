@@ -61,8 +61,10 @@
                 {
                     ele = document.createElement("div");
                     ele.innerHTML = "<p> gl version: " + version + "</p>";
+                    ele.innerHTML+="<p> MAX_TEXTURE_SIZE:" +gl.getParameter(gl.MAX_TEXTURE_SIZE)+"</p>"
                     container.appendChild(ele);
                 }
+
             }
             else
             {

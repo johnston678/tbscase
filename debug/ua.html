@@ -1,0 +1,22 @@
+<html>
+<head>
+    <title>
+        show browser ua info
+    </title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <script>
+        function Init() {
+            var container = document.getElementById("container");
+            var ele = document.createElement("div");
+            var X5Info= '<p><b>浏览器UA为:</b></p><p>'+ navigator.userAgent + "</p>";
+            ele.innerHTML = X5Info;
+            container.appendChild(ele);
+        }
+    </script>
+</head>
+<body onload="Init()">
+<div id="container">
+</div>
+</body>
+</html>
