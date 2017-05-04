@@ -40,6 +40,7 @@
         function d(a, b) {
             "use strict";
             function c() {
+                //johnstonli
                 p = t.children, s = p.length, p.length < 2 && (b.continuous = !1), o.transitions && b.continuous && p.length < 3 && (t.appendChild(p[0].cloneNode(!0)), t.appendChild(t.children[1].cloneNode(!0)), p = t.children), q = new Array(p.length), r = a.getBoundingClientRect().width || a.offsetWidth, t.style.width = p.length * r + "px";
                 for (var c = p.length; c--;) {
                     var d = p[c];
@@ -137,7 +138,7 @@
                                 n(this.transitionEnd(a));
                                 break;
                             case"resize":
-                                n(c)
+                                //n(c);//johnstonli 
                         }
                         b.stopPropagation && a.stopPropagation()
                     }, start: function (a) {
