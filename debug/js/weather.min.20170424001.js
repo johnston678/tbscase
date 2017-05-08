@@ -166,8 +166,8 @@
                         parseInt(a.target.getAttribute("data-index"), 10) == u && (y && k(), b.transitionEnd && b.transitionEnd.call(a, u, p[u]))
                     }
                 };
-                return c(), y && k(), o.addEventListener ? (o.touch && t.addEventListener("touchstart", B, !1), o.transitions && (t.addEventListener("webkitTransitionEnd", B, !1), t.addEventListener("msTransitionEnd", B, !1), t.addEventListener("oTransitionEnd", B, !1), t.addEventListener("otransitionend", B, !1), t.addEventListener("transitionend", B, !1)), window.addEventListener("resize", B, !1)) : window.onresize = function () {
-                    c()
+                return c(), y && k(), o.addEventListener ? (o.touch && t.addEventListener("touchstart", B, !1), o.transitions && (t.addEventListener("webkitTransitionEnd", B, !1), t.addEventListener("msTransitionEnd", B, !1), t.addEventListener("oTransitionEnd", B, !1), t.addEventListener("otransitionend", B, !1), t.addEventListener("transitionend", B, !1))/* johnstonli, window.addEventListener("resize", B, !1)*/) : window.onresize = function () {
+                    //johnstonli c()
                 }, {
                     setup: function () {
                         c()
@@ -189,7 +189,7 @@
                             var b = p[a];
                             b.style.width = "", b.style.left = "", o.transitions && i(a, 0, 0)
                         }
-                        o.addEventListener ? (t.removeEventListener("touchstart", B, !1), t.removeEventListener("webkitTransitionEnd", B, !1), t.removeEventListener("msTransitionEnd", B, !1), t.removeEventListener("oTransitionEnd", B, !1), t.removeEventListener("otransitionend", B, !1), t.removeEventListener("transitionend", B, !1), window.removeEventListener("resize", B, !1)) : window.onresize = null
+                        o.addEventListener ? (t.removeEventListener("touchstart", B, !1), t.removeEventListener("webkitTransitionEnd", B, !1), t.removeEventListener("msTransitionEnd", B, !1), t.removeEventListener("oTransitionEnd", B, !1), t.removeEventListener("otransitionend", B, !1), t.removeEventListener("transitionend", B, !1)/*,window.removeEventListener("resize", B, !1)*/) : window.onresize = null
                     }
                 }
             }
@@ -6108,7 +6108,7 @@
                         if (f = b.proxy(e), e.isImmediatePropagationStopped())return !1
                     })
                 }), f
-            }, "focusin focusout load resize scroll unload click dblclick mousedown mouseup mousemove mouseover mouseout mouseenter mouseleave change select keydown keypress keyup error".split(" ").forEach(function (b) {
+            }, "focusin focusout load scroll unload click dblclick mousedown mouseup mousemove mouseover mouseout mouseenter mouseleave change select keydown keypress keyup error".split(" ").forEach(function (b) {
                 a.fn[b] = function (a) {
                     return a ? this.bind(b, a) : this.trigger(b)
                 }
