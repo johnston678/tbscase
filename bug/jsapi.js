@@ -9037,7 +9037,6 @@ var qq = function(e) {
             })), "JSON", {
             stringify: function(e) {
                 //johnstonli
-                /*
                 if (void 0 !== e && !Y(e)) {
                     for (var l, a, t = [e], i = 1; arguments.length > i;) t.push(arguments[i++]);
                     return l = t[1],
@@ -9048,7 +9047,6 @@ var qq = function(e) {
                         t[1] = l,
                         O.apply(A, t)
                 }
-                */
 
                 //johnstonli
                 /*
@@ -9067,7 +9065,7 @@ var qq = function(e) {
                     return;
                 }
                 */
-
+                /*
                 if (void 0 !== e && !Y(e)) {
                     for (var l, a, t = [e], i = 1; arguments.length > i;) t.push(arguments[i++]);
                      l = t[1],
@@ -9078,6 +9076,7 @@ var qq = function(e) {
                         t[1] = l;
                         return //O.apply(A, t);
                 }
+                */
                 //end
 
             }
@@ -12029,7 +12028,8 @@ var qq = function(e) {
                                     t = this._data;
                                 //johnstonli
                                 //a.data = JSON.stringify(t);
-                                a.data = '{"type":"Point","styles":{"curPosMarker":{"src":"https://3gimg.qq.com/tencentMapTouch/app/miniapp-nav/ico_myplace5.png","rotate":-88,"width":88,"height":88,"anchor":{"x":44,"y":44},"offset":{"x":0,"y":0},"fixed":false}},"geometrys":[{"styleId":"curPosMarker","coordinates":[39.98524260957933,116.31180585993751]}]}';
+                                /*
+                                a.data = '{"type":"Point","styles":{"curPosMarker":{"src":"https://3gimg.qq.com/tencentMapTouch/app/miniapp-nav/ico_myplace5.png","rotate":-88,"width":88,"height":88,"anchor":{"x":44,"y":44},"offset":{"x":0,"y":0},"fixed":false}},"geometrys":[{"styleId":"curPosMarker","coordinates":[39.98524260957933,116.31180585993751]}]}';*/
                                 //end
                                 var i = t.styles;
                                 for (var n in i) {
