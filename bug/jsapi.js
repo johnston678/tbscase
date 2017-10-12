@@ -9036,6 +9036,7 @@ var qq = function(e) {
                     }) || "{}" != O(Object(e))
             })), "JSON", {
             stringify: function(e) {
+                /*
                 if (void 0 !== e && !Y(e)) {
                     for (var l, a, t = [e], i = 1; arguments.length > i;) t.push(arguments[i++]);
                     return l = t[1],
@@ -9046,6 +9047,25 @@ var qq = function(e) {
                         t[1] = l,
                         O.apply(A, t)
                 }
+                */
+
+                //johnstonli
+                if (void 0 !== e && !Y(e)) {
+                    for (var l, a, t = [e], i = 1; arguments.length > i;) {
+                        t.push(arguments[i++]);
+                    }
+                    l = t[1];
+                    "function" == typeof l && (a = l);
+                    !a && x(l) || (l = function(e, l) {
+                        if (a && (l = a.call(this, e, l)),!Y(l))
+                            return l;
+                    });
+                    t[1] = l;
+                    O.apply(A, t);
+                    return;
+                }
+                //end
+
             }
         }),
         T.prototype[L] || a(13)(T.prototype, L, T.prototype.valueOf),
