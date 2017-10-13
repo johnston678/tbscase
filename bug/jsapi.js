@@ -5764,7 +5764,7 @@ var qq = function (e) {
         }  
     }  
       
-    parseSimpleObject: function (object){  
+    parseSimpleObject:function(object){  
         var type = typeof object;  
         if(type == "string" || type == "function"){  
             return "\"" + object.toString().replace("\"", "\\\"") + "\"";  
@@ -5781,7 +5781,7 @@ var qq = function (e) {
         return "\"" + object.toString().replace("\"", "\\\"") + "\"";  
     }  
       
-    indexOf: function (arr, val){  
+    indexOf:function(arr, val){  
         for(var i = 0; i < arr.length; i++){  
             if(arr[i] === val){  
                 return i;  
