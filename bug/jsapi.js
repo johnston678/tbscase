@@ -5711,14 +5711,12 @@ var qq = function (e) {
  * @version 1.0 2015-11-24 15:11 实现了基本功能 
  * @version 1.1 2015-11-24 15:19 norkts 增加了JSON.stringify的兼用代码实现 
  * @version 1.2 2015-11-24 15:49 norkts 修改数组indexOf在IE下不兼容的写法,修改了undefined值的特殊处理 
- */  
-(function(NS){  
-  
+ */   
     //简单类型  
     var simpleTypes = ["number", "boolean", "undefined", "string", "function"];  
       
     //JSON.stringify的主函数  
-    function stringify(object){  
+    stringify:function(object){  
         var type = typeof object;  
           
         //如果是简单类型，则直接返回简单类型的结果  
@@ -5774,7 +5772,7 @@ var qq = function (e) {
         }  
     }  
       
-    function parseSimpleObject(object){  
+    parseSimpleObject: function (object){  
         var type = typeof object;  
         if(type == "string" || type == "function"){  
             return "\"" + object.toString().replace("\"", "\\\"") + "\"";  
@@ -5791,7 +5789,7 @@ var qq = function (e) {
         return "\"" + object.toString().replace("\"", "\\\"") + "\"";  
     }  
       
-    function indexOf(arr, val){  
+    indexOf: function (arr, val){  
         for(var i = 0; i < arr.length; i++){  
             if(arr[i] === val){  
                 return i;  
@@ -5800,32 +5798,7 @@ var qq = function (e) {
           
         return -1;  
     }  
-      
-    /** 
-     * 将stringify做二次封装 
-     * @param object 要处理的对象 
-     * 
-     */  
-    NS.stringify = function(object, isEncodeZh){  
-        var res = stringify(object);  
-        if(isEncodeZh){  
-            var encodeRes = "";  
-            for(var i = 0; i < res.length; i++){  
-                if(res.charCodeAt(i) < 0xff){  
-                    encodeRes += res[i];  
-                }else{  
-                    encodeRes += "\\u" + res.charCodeAt(i).toString(16);  
-                }  
-            }  
-            res = encodeRes;  
-        }  
-          
-        return res;  
-    };  
-})(window);  
-stringify: function (e) {
-    return stringify(e,false);
-    }
+    
         /*
         stringify: function (e) {
             if (void 0 !== e && !Y(e)) {
