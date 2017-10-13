@@ -53,6 +53,8 @@
                 var resArr = [];
 
                 for(var name in object){
+                    if(name=='ownerElement')
+                        continue;
                     var itemType = typeof object[name];
                     if(indexOf(simpleTypes, itemType) > -1){
                         //undefined特殊处理，object中不编码
