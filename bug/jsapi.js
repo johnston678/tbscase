@@ -5705,20 +5705,12 @@ var qq = function (e) {
             return "[null]" != O([e]) || "{}" != O({a: e}) || "{}" != O(Object(e))
         })), "JSON", {
         //johnstonli ES5 support JSON stringify
-        /** 
- * JSON stringify的实现 
- * @author norkts<norkts@gmail.com> 
- * @version 1.0 2015-11-24 15:11 实现了基本功能 
- * @version 1.1 2015-11-24 15:19 norkts 增加了JSON.stringify的兼用代码实现 
- * @version 1.2 2015-11-24 15:49 norkts 修改数组indexOf在IE下不兼容的写法,修改了undefined值的特殊处理 
- */   
-    //简单类型  
-    var simpleTypes = ["number", "boolean", "undefined", "string", "function"];  
-      
+
     //JSON.stringify的主函数  
     stringify:function(object){  
         var type = typeof object;  
-          
+        var simpleTypes = ["number", "boolean", "undefined", "string", "function"];
+
         //如果是简单类型，则直接返回简单类型的结果  
         if(indexOf(simpleTypes, type) > -1){  
             return parseSimpleObject(object);  
@@ -5798,7 +5790,6 @@ var qq = function (e) {
           
         return -1;  
     }  
-    
         /*
         stringify: function (e) {
             if (void 0 !== e && !Y(e)) {
@@ -5809,6 +5800,7 @@ var qq = function (e) {
             }
         }
         */
+
     }), T.prototype[L] || a(13)(T.prototype, L, T.prototype.valueOf), f(T, "Symbol"), f(Math, "Math", !0), f(i.JSON, "JSON", !0)
 }, function (e, l, a) {
     "use strict";
