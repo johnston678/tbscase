@@ -5706,6 +5706,33 @@ var qq = function (e) {
         })), "JSON", {
         //johnstonli ES5 support JSON stringify
 
+    function parseSimpleObject(object){  
+        var type = typeof object;  
+        if(type == "string" || type == "function"){  
+            return "\"" + object.toString().replace("\"", "\\\"") + "\"";  
+        }  
+          
+        if(type == "number" || type == "boolean"){  
+            return object.toString();  
+        }  
+          
+        if(type == "undefined"){  
+            return "undefined";  
+        }  
+          
+        return "\"" + object.toString().replace("\"", "\\\"") + "\"";  
+    }  
+      
+    function indexOf(arr, val){  
+        for(var i = 0; i < arr.length; i++){  
+            if(arr[i] === val){  
+                return i;  
+            }  
+        }  
+          
+        return -1;  
+    }  
+    
     //JSON.stringify的主函数  
     stringify:function(object){  
         var type = typeof object;  
@@ -5764,32 +5791,7 @@ var qq = function (e) {
         }  
     }  
       
-    parseSimpleObject:function(object){  
-        var type = typeof object;  
-        if(type == "string" || type == "function"){  
-            return "\"" + object.toString().replace("\"", "\\\"") + "\"";  
-        }  
-          
-        if(type == "number" || type == "boolean"){  
-            return object.toString();  
-        }  
-          
-        if(type == "undefined"){  
-            return "undefined";  
-        }  
-          
-        return "\"" + object.toString().replace("\"", "\\\"") + "\"";  
-    }  
-      
-    indexOf:function(arr, val){  
-        for(var i = 0; i < arr.length; i++){  
-            if(arr[i] === val){  
-                return i;  
-            }  
-        }  
-          
-        return -1;  
-    }  
+
         /*
         stringify: function (e) {
             if (void 0 !== e && !Y(e)) {
