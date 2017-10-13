@@ -53,7 +53,7 @@
                 var resArr = [];
 
                 for(var name in object){
-                    if(name=='ownerElement')
+                    if(name=='ownerElement' || name=='textContent' || name=='nodeValue' || object=='Attr')
                         continue;
                     var itemType = typeof object[name];
                     if(indexOf(simpleTypes, itemType) > -1){
