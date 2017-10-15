@@ -51,10 +51,16 @@
                 }
 
                 //johnstonli
+                /*
                 if(object.nodeName==="CANVAS")
                     return "{}";
+                */
+
+                if(((object.nodeName != undefined) && (object.nodeName==="CANVAS"))
+                        || ((object.nodeType != undefined) && (object.nodeType===1)))
+                    return "{}";
                 //endif
-                
+
                 var resArr = [];
 
                 for(var name in object){
