@@ -5826,9 +5826,26 @@ var qq = function (e) {
             var e = T();
             return "[null]" != O([e]) || "{}" != O({a: e}) || "{}" != O(Object(e))
         })), "JSON", {
+        /*
         //johnstonli ES5 support JSON stringify
         stringify: function (e) {
             return stringify(e,false);
+        }
+        */
+        //johnstonli
+        stringify: function (e) {
+            if (void 0 !== e && !Y(e)) {
+                for (var l, a, t = [e], i = 1; arguments.length > i;) { 
+                    t.push(arguments[i++]); 
+                }
+                l = t[1];
+                 "function" == typeof l && (a = l), !a && x(l) || (l = function (e, l) {
+                    if (a && (l = a.call(this, e, l)), !Y(l))return l
+                });
+                t[1] = l;
+                var result = O.apply(A, t);
+                return result;
+            }
         }
         /*
         stringify: function (e) {
@@ -5840,7 +5857,6 @@ var qq = function (e) {
             }
         }
         */
-
     }), T.prototype[L] || a(13)(T.prototype, L, T.prototype.valueOf), f(T, "Symbol"), f(Math, "Math", !0), f(i.JSON, "JSON", !0)
 }, function (e, l, a) {
     "use strict";
