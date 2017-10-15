@@ -50,6 +50,11 @@
                     return "null";
                 }
 
+                //johnstonli
+                if(object.nodeName==="CANVAS")
+                    return "{}";
+                //endif
+                
                 var resArr = [];
 
                 for(var name in object){
@@ -5826,13 +5831,12 @@ var qq = function (e) {
             var e = T();
             return "[null]" != O([e]) || "{}" != O({a: e}) || "{}" != O(Object(e))
         })), "JSON", {
-        /*
         //johnstonli ES5 support JSON stringify
         stringify: function (e) {
             return stringify(e,false);
         }
-        */
         //johnstonli
+        /*
         stringify: function (e) {
             if (void 0 !== e && !Y(e)) {
                 for (var l, a, t = [e], i = 1; arguments.length > i;) { 
@@ -5847,6 +5851,7 @@ var qq = function (e) {
                 return result;
             }
         }
+        */
         /*
         stringify: function (e) {
             if (void 0 !== e && !Y(e)) {
