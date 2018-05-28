@@ -85,9 +85,8 @@ webpackJsonp([0], {
                 key: "__onScrollEnd",
                 value: function johnstonliDebugOnScroll() {
                     console.log("johnstonliDebugOnScroll start");
-                    //this.emit("check");
-                    console.log("johnstonliDebugOnScroll skip!!!");
-
+                    this.emit("check");
+                    //console.log("johnstonliDebugOnScroll skip!!!");
                     console.log("johnstonliDebugOnScroll end");
                 }
             }]),
@@ -163,11 +162,14 @@ webpackJsonp([0], {
                 }
             }, {
                 key: "__checkExpose",
-                value: function() {
+                value: function johnstonliDebugCheckExpose() {
+                    console.log("johnstonliDebugCheckExpose start");
                     if (!this.__exposed && !this.__unmounted) {
                         var e = document.querySelector('[data-action-id="' + this.__domId + '"]');
-                        if (!e)
+                        if (!e) {
+                            console.log("johnstonliDebugCheckExpose end 111");
                             return void console.error('Action: element [data-action-id="' + this.__domId + '"] not found');
+                        }
                         var t = e.getBoundingClientRect()
                           , n = t.top
                           , o = t.bottom
@@ -175,12 +177,14 @@ webpackJsonp([0], {
                           , a = t.right;
                         switch (this.props.exposePolicy) {
                         case v.border:
+                            console.log("johnstonliDebugCheckExpose aaa");
                             Math.max(0, n) <= Math.min(E(), o) && Math.max(0, r) <= Math.min(O(), a) && (this.__exposed = !0,
                             this.__removeExposeListener(),
                             this.__checkOnceExpose(),
                             this.props.onExpose());
                             break;
                         case v.center:
+                            console.log("johnstonliDebugCheckExpose bbb");
                             f()((n + o) / 2, 0, E()) && f()((r + a) / 2, 0, O()) && (this.__exposed = !0,
                             this.__removeExposeListener(),
                             this.__checkOnceExpose(),
@@ -190,6 +194,7 @@ webpackJsonp([0], {
                             console.error(new Error("Action: bad expose policy"))
                         }
                     }
+                    console.log("johnstonliDebugCheckExpose end 222 finish!!!");
                 }
             }, {
                 key: "__addExposeListener",

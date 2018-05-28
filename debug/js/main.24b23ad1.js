@@ -2831,7 +2831,8 @@ webpackJsonp([14], Array(23).concat([function(e, t, n) {
         this
     }
     ,
-    n.prototype.emit = function(e) {
+    n.prototype.emit = function johnstonliDebugEmit(e) {
+        console.log("johnstonliDebugEmit start e="+e);
         var t, n, o, u, c, s;
         if (this._events || (this._events = {}),
         "error" === e && (!this._events.error || i(this._events.error) && !this._events.error.length)) {
@@ -2842,8 +2843,10 @@ webpackJsonp([14], Array(23).concat([function(e, t, n) {
             l
         }
         if (n = this._events[e],
-        a(n))
+        a(n)) {
+            console.log("johnstonliDebugEmit end 111");
             return !1;
+        }
         if (r(n))
             switch (arguments.length) {
             case 1:
@@ -2859,12 +2862,26 @@ webpackJsonp([14], Array(23).concat([function(e, t, n) {
                 u = Array.prototype.slice.call(arguments, 1),
                 n.apply(this, u)
             }
-        else if (i(n))
+        else if (i(n)) {
+            //johnstonli
+            /*
             for (u = Array.prototype.slice.call(arguments, 1),
             s = n.slice(),
             o = s.length,
             c = 0; c < o; c++)
                 s[c].apply(this, u);
+            */
+
+            for (u = Array.prototype.slice.call(arguments, 1),
+            s = n.slice(),
+            o = s.length,
+            c = 0; c < o; c++) {
+                console.log("johnstonliDebugEmit apply start c="+c+" o="+o+" u="+u);
+                s[c].apply(this, u);
+                console.log("johnstonliDebugEmit apply end");
+            }
+        }
+        console.log("johnstonliDebugEmit end 222 finish");
         return !0
     }
     ,
