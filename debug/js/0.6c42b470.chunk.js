@@ -63,7 +63,9 @@ webpackJsonp([0], {
                     e.__timer = setTimeout(
                         //johnstonli 
                         function johnstonliDebugHandleScroll() {
+                        console.log("johnstonliDebugHandleScroll start");
                         var flag = e.__onScrollEnd();
+                        console.log("johnstonliDebugHandleScroll end");
                         return flag;
                     }, b)
                 }),
@@ -81,8 +83,10 @@ webpackJsonp([0], {
             return a(t, e),
             h(t, [{
                 key: "__onScrollEnd",
-                value: function() {
-                    this.emit("check")
+                value: function johnstonliDebugOnScroll() {
+                    console.log("johnstonliDebugOnScroll start");
+                    this.emit("check");
+                    console.log("johnstonliDebugOnScroll end");
                 }
             }]),
             t
