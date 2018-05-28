@@ -85,7 +85,9 @@ webpackJsonp([0], {
                 key: "__onScrollEnd",
                 value: function johnstonliDebugOnScroll() {
                     console.log("johnstonliDebugOnScroll start");
-                    this.emit("check");
+                    //this.emit("check");
+                    console.log("johnstonliDebugOnScroll skip!!!");
+
                     console.log("johnstonliDebugOnScroll end");
                 }
             }]),
