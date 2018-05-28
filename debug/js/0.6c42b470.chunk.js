@@ -64,12 +64,15 @@ webpackJsonp([0], {
                         return e.__onScrollEnd()
                     }, b)
                 }),
+                //johnstonli
+                /*
                 setInterval(function() {
                     e.__timer && clearTimeout(e.__timer),
                     e.__timer = setTimeout(function() {
                         return e.__onScrollEnd()
                     }, b)
                 }, 300),
+                */
                 e
             }
             return a(t, e),
