@@ -58,7 +58,8 @@ webpackJsonp([0], {
                 o(this, t);
                 var e = r(this, (t.__proto__ || Object.getPrototypeOf(t)).call(this));
                 return e.__timer = null,
-                window.addEventListener("scroll", function() {
+                window.addEventListener("scroll", function johnstonliDebugScrollLis() {
+                    console.log("johnstonliDebugScrollLis start");
                     e.__timer && clearTimeout(e.__timer),
                     e.__timer = setTimeout(
                         //johnstonli 
@@ -68,13 +69,19 @@ webpackJsonp([0], {
                         console.log("johnstonliDebugHandleScroll end");
                         return flag;
                     }, b)
+                    console.log("johnstonliDebugScrollLis end");
                 }),
                 //johnstonli
-                setInterval(function() {
+                setInterval(function johnstonliDebugInterval() {
+                    console.log("johnstonliDebugInterval start");
                     e.__timer && clearTimeout(e.__timer),
-                    e.__timer = setTimeout(function() {
-                        return e.__onScrollEnd()
+                    e.__timer = setTimeout(function johnstonliDebugTimeout() {
+                        console.log("johnstonliDebugTimeout start");
+                        var flag2 = e.__onScrollEnd()
+                        console.log("johnstonliDebugTimeout end");
+                        return flag2;
                     }, b)
+                    console.log("johnstonliDebugInterval end");
                 }, 300),
                 e
             }
