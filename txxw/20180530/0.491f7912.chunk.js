@@ -59,14 +59,18 @@ webpackJsonp([0], {
                 var e = r(this, (t.__proto__ || Object.getPrototypeOf(t)).call(this));
                 return e.__timer = null,
                 window.addEventListener("scroll", function johnstonAddScroll() {
+                    console.log("johnstonAddScroll");
                     e.__timer && clearTimeout(e.__timer),
                     e.__timer = setTimeout(function johnstonScrollTimeout() {
+                        console.log("johnstonScrollTimeout");
                         return e.__onScrollEnd()
                     }, b)
                 }),
                 setInterval(function johnstonAddInterval() {
+                    console.log("johnstonAddInterval");
                     e.__timer && clearTimeout(e.__timer),
                     e.__timer = setTimeout(function johnstonIntervalTimeout() {
+                        console.log("johnstonIntervalTimeout");
                         return e.__onScrollEnd()
                     }, b)
                 }, 300),
@@ -76,7 +80,8 @@ webpackJsonp([0], {
             h(t, [{
                 key: "__onScrollEnd",
                 value: function johnstonOnScrollEnd() {
-                    this.emit("check")
+                    console.log(" johnstonOnScrollEnd");
+                    this.emit("check");
                 }
             }]),
             t
