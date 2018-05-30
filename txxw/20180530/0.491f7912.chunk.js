@@ -58,6 +58,8 @@ webpackJsonp([0], {
                 o(this, t);
                 var e = r(this, (t.__proto__ || Object.getPrototypeOf(t)).call(this));
                 return e.__timer = null,
+                //johnstonli
+                /*
                 window.addEventListener("scroll", function() {
                     e.__timer && clearTimeout(e.__timer),
                     e.__timer = setTimeout(function johnstonScrollTimeout() {
@@ -70,6 +72,8 @@ webpackJsonp([0], {
                         return e.__onScrollEnd()
                     }, b)
                 }, 300),
+                */
+                //end
                 e
             }
             return a(t, e),
