@@ -198,7 +198,7 @@ webpackJsonp([0], {
                 value: function() {
                     var e = this
                       , t = document.querySelector('[data-action-id="' + this.__domId + '"]');
-                    t && t.addEventListener("click", function() {
+                    t && t.addEventListener("click", function johnstonAddClick() {
                         return e.props.onClick()
                     })
                 }
@@ -207,7 +207,7 @@ webpackJsonp([0], {
                 value: function() {
                     var e = this
                       , t = document.querySelector('[data-action-id="' + this.__domId + '"]');
-                    t && t.addEventListener("touchstart", function(t) {
+                    t && t.addEventListener("touchstart", function johnstonAddTouchstart(t) {
                         return e.props.onTouchStart(t)
                     })
                 }
@@ -216,7 +216,7 @@ webpackJsonp([0], {
                 value: function() {
                     var e = this
                       , t = document.querySelector('[data-action-id="' + this.__domId + '"]');
-                    t && t.addEventListener("touchmove", function(t) {
+                    t && t.addEventListener("touchmove", function johnstonAddTouchmove(t) {
                         return e.props.onTouchMove(t)
                     })
                 }
@@ -225,13 +225,13 @@ webpackJsonp([0], {
                 value: function() {
                     var e = this
                       , t = document.querySelector('[data-action-id="' + this.__domId + '"]');
-                    t && (t.removeEventListener("touchmove", function(t) {
+                    t && (t.removeEventListener("touchmove", function johnstonRemoveTouchmove(t) {
                         return e.props.onTouchMove(t)
                     }),
-                    t.removeEventListener("touchend", function(t) {
+                    t.removeEventListener("touchend", function johnstonRemoveTouchend(t) {
                         return e.props.onTouchEnd(t)
                     }),
-                    t.addEventListener("touchend", function(t) {
+                    t.addEventListener("touchend", function johnstonAddTouchend(t) {
                         return e.props.onTouchEnd(t)
                     }))
                 }
