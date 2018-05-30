@@ -60,15 +60,19 @@ webpackJsonp([0], {
                 return e.__timer = null,
                 window.addEventListener("scroll", function() {
                     e.__timer && clearTimeout(e.__timer),
+                    /*
                     e.__timer = setTimeout(function johnstonScrollTimeout() {
                         //return e.__onScrollEnd()
                     }, b)
+                    */
                 }),
                 setInterval(function() {
                     e.__timer && clearTimeout(e.__timer),
+                    /*
                     e.__timer = setTimeout(function johnstonIntervalTimeout() {
                         //return e.__onScrollEnd()
                     }, b)
+                    */
                 }, 300),
                 e
             }
