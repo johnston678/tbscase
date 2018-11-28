@@ -25,9 +25,9 @@ function init(){
 	if (canvas && canvas.getContext) {
 		//setup page
 		context = canvas.getContext('2d');
-		header = new PerformanceBar( "GM3 HTML5 Vector", document.getElementById('headerbar') );
-		setInterval( loop, 1000 / FRAMERATE );
-		
+		//header = new PerformanceBar( "GM3 HTML5 Vector", document.getElementById('headerbar') );
+		//setInterval( loop, 1000 / FRAMERATE );
+		requestAnimationFrame(loop);
 		//initialize test variables
 		vizTime = TimeUtil.getTimer();
 		white = new CSSColor(255, 255, 255);
@@ -60,8 +60,9 @@ function loop(){
 			renderDrop(drop);
 		}
 	}
-	header.updatePerformance();
+	//header.updatePerformance();
     checkFPS(context);
+	requestAnimationFrame(loop);
 }
 
 function easeOut(t, b, c, d) {

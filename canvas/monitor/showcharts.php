@@ -9,12 +9,21 @@
         ${demo.css}
     </style>
     <?php
+
     $con = mysql_connect("qdm114751488.my3w.com", "qdm114751488", "309341935");
     if (!$con) {
         echo('Could not connect: '.mysql_error());
     }
-
     mysql_select_db("qdm114751488_db", $con);
+
+    /*
+    //local test
+    $con = mysql_connect("localhost", "root", "root");
+    if (!$con) {
+        echo('Could not connect: '.mysql_error());
+    }
+    mysql_select_db("u_wsd", $con);
+    */
 
     $ttsjxx = $_POST[ttsjxx];
     $ttfzxx = $_POST[ttfzxx];
@@ -23,8 +32,10 @@
     $csylArray=array();
     $fpsArray=array();
 
-    $sqlcssj= "SELECT distinct(cssj) FROM tt_monitor WHERE sjxx='".$ttsjxx."' and fzxx='".$ttfzxx."' ORDER BY cssj DESC  LIMIT 0,10;";
-
+    if($ttfzxx=="tbs3")
+        $sqlcssj= "SELECT distinct(cssj) FROM tt_monitor WHERE sjxx='".$ttsjxx."' and fzxx='".$ttfzxx."' and csbb like 'tbs_core_%.apk' ORDER BY cssj DESC  LIMIT 0,10;";
+    else
+        $sqlcssj= "SELECT distinct(cssj) FROM tt_monitor WHERE sjxx='".$ttsjxx."' and fzxx='".$ttfzxx."' ORDER BY cssj DESC  LIMIT 0,10;";
     //echo "sqlcssj:".$sqlcssj;
 
     $resultcssj = mysql_query($sqlcssj);
@@ -34,6 +45,8 @@
     }
 
     $sqlcsyl= "SELECT csyl FROM tt_monitor WHERE cssj='".$cssjArray[0]."' ORDER BY id ";
+
+    //echo "sqlcsyl:".$sqlcsyl;
 
     $resultcsyl = mysql_query($sqlcsyl);
     while($rowcsyl = mysql_fetch_array($resultcsyl))
@@ -49,7 +62,7 @@
         $instancefps = array();
         while($rowfps = mysql_fetch_array($resultfps))
         {
-            $instancefps[]=intval($rowfps['avgfps']);
+            $instancefps[]=$rowfps['avgfps'];
         }
         $fpsArray[$csylCount]=$instancefps;
         $csylCount++;
@@ -79,9 +92,12 @@
             var csylArray = <?php echo json_encode($csylArray) ?>;
             var fpsArray = <?php echo json_encode($fpsArray) ?>;
 
+            var ttsjxx = <?php echo json_encode($ttsjxx) ?>;
+            var ttfzxx = <?php echo json_encode($ttfzxx) ?>;
+
             $('#container').highcharts({
                 title: {
-                    text: 'Canvas & WebGL Performance',
+                    text: 'Canvas & WebGL Performance('+ttsjxx+'-'+ttfzxx+')',
                     x: -20 //center
                 },
                 xAxis: {
@@ -106,20 +122,21 @@
                     verticalAlign: 'middle',
                     borderWidth: 0
                 },
-                series: [
-                    {
-                        name: csylArray[0],
-                        data: fpsArray[0]
-                    }
-                ]
             });
 
             var chart = $('#container').highcharts();
-            for (var index =1; index<csylArray.length; index++)
+            for (var index =0; index<csylArray.length; index++)
             {
+                var dataString = [];
+                for (var dindex =0; dindex<cssjArray.length; dindex++) {
+                    dataString.push({
+                        y: parseFloat(fpsArray[index][dindex])
+                    });
+                }
+
                 chart.addSeries({
                     name: csylArray[index],
-                    data: fpsArray[index]
+                    data: dataString
                 },true);
             }
 

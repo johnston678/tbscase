@@ -45,9 +45,9 @@ function init(){
 	if (canvas && canvas.getContext) {
 		//setup page
 		context = canvas.getContext('2d');
-		header = new PerformanceBar( "GM3 HTML5 Bitmap", document.getElementById('headerbar') );
-		setInterval( loop, 1000 / FRAMERATE );
-		
+		//header = new PerformanceBar( "GM3 HTML5 Bitmap", document.getElementById('headerbar') );
+		//setInterval( loop, 1000 / FRAMERATE );
+		requestAnimationFrame(loop);
 		//initialize test variables
 		gameTime = TimeUtil.getTimer()+30000;
 	}
@@ -63,8 +63,9 @@ function loop(){
 	drawEnemies();
 	drawBullets();
 	drawShip();
-	header.updatePerformance();
+	//header.updatePerformance();
     checkFPS(context);
+	requestAnimationFrame(loop);
 }
 
 function drawGround(tick){

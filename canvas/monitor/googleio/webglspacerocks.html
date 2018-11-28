@@ -45,8 +45,7 @@ CANVAS {
   height: 100%;
 }
 </style>
-<script type="text/javascript" src="./webglspacerocks_files/webgl-debug.js"></script>
-<script type="text/javascript" src="./webglspacerocks_files/base.js"></script>
+<script type="text/javascript" src="tdl/base.js"></script>
     <script type="text/javascript" src="../0_utils/cookiemanager.js"></script>
 <script type="text/javascript">
 tdl.require('tdl.buffers');
@@ -60,6 +59,7 @@ tdl.require('tdl.primitives');
 tdl.require('tdl.programs');
 tdl.require('tdl.textures');
 tdl.require('tdl.webgl');
+
 window.onload = main;
 
 // globals
@@ -610,8 +610,8 @@ function initialize() {
     }
     then = now;
 
-    g_fpsTimer.update(elapsedTime);
-    fpsElem.innerHTML = g_fpsTimer.averageFPS;
+    //g_fpsTimer.update(elapsedTime);
+    //fpsElem.innerHTML = g_fpsTimer.averageFPS;
 
     clock += elapsedTime;
     eyePosition[0] = Math.sin(clock * g_eyeSpeed) * g_eyeRadius;
@@ -826,11 +826,11 @@ function initialize() {
   return true;
 }
 closeWindowAndSetCookieAfterDelayTime(testTimeOut, webglspacerocks_avg);
-</script><script type="text/javascript" src="./webglspacerocks_files/buffers.js"></script><script type="text/javascript" src="./webglspacerocks_files/fast.js"></script><script type="text/javascript" src="./webglspacerocks_files/fps.js"></script><script type="text/javascript" src="./webglspacerocks_files/log.js"></script><script type="text/javascript" src="./webglspacerocks_files/string.js"></script><script type="text/javascript" src="./webglspacerocks_files/math.js"></script><script type="text/javascript" src="./webglspacerocks_files/models.js"></script><script type="text/javascript" src="./webglspacerocks_files/particles.js"></script><script type="text/javascript" src="./webglspacerocks_files/shader.js"></script><script type="text/javascript" src="./webglspacerocks_files/primitives.js"></script><script type="text/javascript" src="./webglspacerocks_files/programs.js"></script><script type="text/javascript" src="./webglspacerocks_files/textures.js"></script><script type="text/javascript" src="./webglspacerocks_files/webgl.js"></script><script type="text/javascript" src="./webglspacerocks_files/misc.js"></script>
+</script>
 </head>
 <body>
-<div id="info"><a href="http://threedlibrary.googlecode.com/" target="_blank">tdl.js</a> - spacerocks</div>
-<div class="fpsContainer">
+<div id="info" style="display: none"><a href="http://threedlibrary.googlecode.com/" target="_blank">tdl.js</a> - spacerocks</div>
+<div class="fpsContainer" style="display: none">
   <div class="fps">fps: <span id="fps">32</span></div>
   <div>Meteors</div>
   <div id="setCount0" style="color: red;">1</div>

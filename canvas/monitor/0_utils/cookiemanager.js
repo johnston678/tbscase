@@ -1,3 +1,4 @@
+//auto test
 function createObject(cookieName, url)
 {
     var object = new Object();
@@ -121,8 +122,8 @@ function backTohomeUrl() {
     setCookie(pageCookieName+"_avg",avg);
     //setCookie(pageCookieName+"_max",Math.round(max_value));
     //setCookie(pageCookieName+"_min",Math.round(min_value));
-	setCookie(pageCookieName+"_max",max_value.toFixed(2));
-	setCookie(pageCookieName+"_min",min_value.toFixed(2));
+    setCookie(pageCookieName+"_max",max_value.toFixed(2));
+    setCookie(pageCookieName+"_min",min_value.toFixed(2));
     console.log("url:"+pageCookieName+" avg:"+avg+" max_value:"+max_value+ " min_value:"+min_value);
     window.history.back();
 }
@@ -144,6 +145,8 @@ function closeWindowAndSetCookieAfterDelayTime(delayTime, cookieName)
 		testStartRecordTime);
 
 	m_cookieName = cookieName;
+
+	initTBSFPS();
 }
 
 function closeWindowAndSetCookieAfterCount(count, cookieName)
@@ -198,13 +201,13 @@ function addValue(value)
 
 function getAvgValue()
 {
-	var average = 0;
-	var length = valueArray.length;
-	for (var i=0; i < length; i++) {
-	average += valueArray[i];
-	}
-	//return Math.round(average / length);	
-	return (average/length).toFixed(2);
+        var average = 0;
+		var length = valueArray.length;
+		for (var i=0; i < length; i++){
+			average += valueArray[i];
+		}
+		//return Math.round(average / length);
+		return (average/length).toFixed(2);
 }
 
 var drawIndex = 1;
@@ -233,3 +236,69 @@ function checkFPS(ctx)
     }
     drawIndex++;
 }
+
+//FPS
+var tbsfpsMeter = null;
+
+TBSTimeUtil = {
+	startTime: new Date().getTime(),
+	getTimer: function(){
+		return new Date().getTime()-TBSTimeUtil.startTime;
+	}
+}
+
+function TBSFPSMeter(){
+	var sampleFPS = 0;
+	var lastSampledTime = 0;
+	var sampleFrames = 0;
+	var attchedBody = false;
+	var sampleElement=document.createElement("div");
+	sampleElement.style="position:absolute;padding: 0px; margin: 0px; color:#FF0000; z-index:1";
+	sampleElement.id="fpsmeterId";
+
+	if(document.body!=null) {
+		//document.body.appendChild(sampleElement);
+		document.body.insertBefore(sampleElement,document.body.firstChild);
+		attchedBody = true;
+	}
+
+	this.sampleDuration = 1000;
+
+	this.showFPS = function(){
+		sampleFrames++;
+		var diff = TBSTimeUtil.getTimer()-lastSampledTime;
+		if(diff >= this.sampleDuration){
+			var rawFPS = sampleFrames/(diff/1000);
+			sampleFPS = TBSFPSMeter.formatNumber(rawFPS);
+			sampleFrames = 0;
+			lastSampledTime = TBSTimeUtil.getTimer();
+			sampleElement.innerHTML = sampleFPS+" FPS";
+			addValue(sampleFPS);
+			if(!attchedBody && document.body!=null) {
+				//document.body.appendChild(sampleElement);
+				document.body.insertBefore(sampleElement,document.body.firstChild);
+				attchedBody = true;
+			}
+		}
+	}
+}
+
+TBSFPSMeter.formatNumber = function(val){
+	//format as XX.XX
+	return Math.floor(val*100)/100;
+}
+
+function loopTBSFPS() {
+	if(tbsfpsMeter!=null)
+		tbsfpsMeter.showFPS();
+	requestAnimationFrame(loopTBSFPS);
+}
+
+function initTBSFPS(){
+	if(tbsfpsMeter==null)
+		tbsfpsMeter = new TBSFPSMeter();
+	requestAnimationFrame(loopTBSFPS);
+}
+
+
+

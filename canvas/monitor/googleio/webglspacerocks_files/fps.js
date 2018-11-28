@@ -93,7 +93,7 @@ tdl.fps.FPSTimer.prototype.update = function(elapsedTime) {
   this.averageFPS = Math.floor(
       (1.0 / (this.totalTime_ / tdl.fps.NUM_FRAMES_TO_AVERAGE)) + 0.5);
 
-    addValue(this.averageFPS);
+    //addValue(this.averageFPS);
 
 };
 

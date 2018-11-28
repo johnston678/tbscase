@@ -30,6 +30,10 @@ $ttfzxx = $_POST[ttfzxx];
 $ttua = $_POST[ttua];
 
 //echo "ttcsylarray:"."is_array:".is_array($ttcsylarray)."count:".count($ttcsylarray)."ttcsylarray[0]".$ttcsylarray[0];
+//local test
+//$con = mysql_connect("localhost", "root", "root");
+//mysql_select_db("u_wsd", $con);
+//end
 
 $con = mysql_connect("qdm114751488.my3w.com", "qdm114751488", "309341935");
 if (!$con) {

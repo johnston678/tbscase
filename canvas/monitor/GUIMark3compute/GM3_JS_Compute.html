@@ -36,9 +36,9 @@ function init(){
 	if (canvas && canvas.getContext) {
 		//setup page
 		context = canvas.getContext('2d');
-		header = new PerformanceBar( "GM3 HTML5 Compute", document.getElementById('headerbar') );
-		setInterval( loop, 1000 / FRAMERATE );
-		
+		//header = new PerformanceBar( "GM3 HTML5 Compute", document.getElementById('headerbar') );
+		//setInterval( loop, 1000 / FRAMERATE );
+		requestAnimationFrame(loop);
 		//initialize test variables
 		createBoids();
 	}
@@ -98,8 +98,9 @@ function loop() {
 			context.stroke();
 		}
 	}
-	header.updatePerformance();
+	//header.updatePerformance();
     checkFPS(context);
+    requestAnimationFrame(loop);
 }
 function toggleDraw() {
 	drawEnabled = !drawEnabled;
