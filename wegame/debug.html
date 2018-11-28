@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<title>WeGame Debug</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+<body>
+<div>============WeGame Debug==============</div>
+<p>
+    <label>游戏类型</label>
+    <select id="gametypeid">
+        <option value ="&type=game">游戏中心</option>
+        <option value ="&type=advergame">商业中心</option>
+    </select>
+</p>
+<p>
+    <label>插件信息</label>
+    <select id="engineid">
+    <option value ="&localengine=/sdcard/wegame_engine">本地插件</option>
+    <option value ="&betaengine=com.tencent.mtt.external.wegame.engine.debug">beta插件</option>
+    <option value ="">线上插件</option>
+    </select>
+</p>
+<p>
+    <label>包信息</label>
+    <select id="packageid">
+        <option value ="&localpackage=/sdcard/wegame_debug">本地游戏包</option>
+        <option value ="&verifypackage=0">beta游戏包</option>
+        <option value ="">线上游戏包</option>
+    </select>
+</p>
+<p>游戏ID:<input type="text" id="gameid" value="7997633965"></input></p>
+<p>beta游戏包网址为:<input type="text" id="betapackageurl" value=""></p>
+<p><button onclick="debug()">调试小游戏</button></p>
+<br>
+<br>
+<script>
+    var gametypeid = document.getElementById("gametypeid");
+    var engineid = document.getElementById("engineid");
+    var packageid = document.getElementById("packageid");
+    var gameid = document.getElementById("gameid");
+    var betapackageurl = document.getElementById("betapackageurl");
+    var url = "qb://weapp/?package=debug&title=debug&entry=75010&sandbox=1";
+    function debug() {
+        var openurl = url+gametypeid.value+engineid.value+"&gameid="+gameid.value+packageid.value;
+        if(packageid.value=="&verifypackage=0") {
+            openurl+="&betapackage="+betapackageurl.value;
+        }
+        alert(openurl);
+        window.open(openurl);
+    }
+</script>
+</body>
+</html>
