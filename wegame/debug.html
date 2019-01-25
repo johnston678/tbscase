@@ -13,6 +13,13 @@
     </select>
 </p>
 <p>
+    <label>沙箱环境</label>
+    <select id="sandboxid">
+        <option value ="&sandbox=1">沙箱</option>
+        <option value ="">正式</option>
+    </select>
+</p>
+<p>
     <label>插件信息</label>
     <select id="engineid">
     <option value ="&localengine=/sdcard/wegame_engine">本地插件</option>
@@ -35,13 +42,14 @@
 <br>
 <script>
     var gametypeid = document.getElementById("gametypeid");
+    var sandboxid = document.getElementById("sandboxid");
     var engineid = document.getElementById("engineid");
     var packageid = document.getElementById("packageid");
     var gameid = document.getElementById("gameid");
     var betapackageurl = document.getElementById("betapackageurl");
     var url = "qb://weapp/?package=debug&title=debug&entry=75010&sandbox=1";
     function debug() {
-        var openurl = url+gametypeid.value+engineid.value+"&gameid="+gameid.value+packageid.value;
+        var openurl = url+gametypeid.value+engineid.value+"&gameid="+gameid.value+packageid.value+sandboxid.value;
         if(packageid.value=="&verifypackage=0") {
             openurl+="&betapackage="+betapackageurl.value;
         }
