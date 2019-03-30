@@ -28572,11 +28572,14 @@ var egret;
                 }
                 ,
                 e.onmessage = function(e) {
-                    t.onSocketData && t.onSocketData.call(t.thisObject, e.data)
+                    console.log("egretLib5_0_15V9.js egret.web.HTML5WebSocket e.onmessage url="+e.origin);
+                    t.onSocketData && t.onSocketData.call(t.thisObject, e.data);
                 }
             }
             ,
             e.prototype.send = function(t) {
+                console.log("egretLib5_0_15V9.js egret.web.HTML5WebSocket e.prototype.send url="+this.socket.url
+                +" binaryType="+this.socket.binaryType);
                 this.socket.send(t)
             }
             ,
