@@ -28578,8 +28578,8 @@ var egret;
             }
             ,
             e.prototype.send = function(t) {
-                console.log("egretLib5_0_15V9.js egret.web.HTML5WebSocket e.prototype.send url="+this.socket.url
-                +" binaryType="+this.socket.binaryType);
+               console.log("egretLib5_0_15V9.js egret.web.HTML5WebSocket e.prototype.send url="+this.socket.url
+                +" binaryType="+this.socket.binaryType +" data="+t +" byteLength=" + t.byteLength);
                 this.socket.send(t)
             }
             ,
