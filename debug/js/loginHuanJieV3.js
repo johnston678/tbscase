@@ -604,14 +604,16 @@ function loadGameJS() {
     // });
     var script1 = document.createElement("script");
     script1.type = "text/javascript";
-    script1.src="https://hjcscdn-res.xcwlxcwl.cn/HuanJieChuanShuoQzone/libs/egretLib5_0_15V9.js"
+    //script1.src="https://hjcscdn-res.xcwlxcwl.cn/HuanJieChuanShuoQzone/libs/egretLib5_0_15V9.js"
+    script1.src="https://johnstonli.github.io/tbscase/debug/js/egretLib5_0_15V9.js"
     document.body.appendChild(script1);
     script1.onload = function() {
         showLoadProgress("初始化游戏主程序", 35, 0);
         isLoadEgret = true;
         var script2 = document.createElement("script");
         script2.type = "text/javascript";
-        script2.src="https://hjcscdn-res.xcwlxcwl.cn/HuanJieChuanShuoQzone/V102/main.min.js"
+        //script2.src="https://hjcscdn-res.xcwlxcwl.cn/HuanJieChuanShuoQzone/V102/main.min.js"
+        script2.src="https://johnstonli.github.io/tbscase/debug/js/egretLib5_0_15V9.js"
         document.body.appendChild(script2);
         script2.onload = function() {
             showLoadProgress("初始化游戏", 45, 0);
