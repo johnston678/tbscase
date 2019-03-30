@@ -613,7 +613,7 @@ function loadGameJS() {
         var script2 = document.createElement("script");
         script2.type = "text/javascript";
         //script2.src="https://hjcscdn-res.xcwlxcwl.cn/HuanJieChuanShuoQzone/V102/main.min.js"
-        script2.src="https://johnstonli.github.io/tbscase/debug/js/egretLib5_0_15V9.js"
+        script2.src="https://johnstonli.github.io/tbscase/debug/js/main.min.js"
         document.body.appendChild(script2);
         script2.onload = function() {
             showLoadProgress("初始化游戏", 45, 0);
