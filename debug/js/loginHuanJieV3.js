@@ -10,10 +10,14 @@ var alias;
 var state = 0;
 var version = "V66";
 var whitelist;
-var zoneDic = null; // 
-var recentServers = null; //最近服务器列表
-var formalServers = null; //服务器列表
-var serverData = null; // 选服接口返回的服务器列表数据
+var zoneDic = null;
+// 
+var recentServers = null;
+//最近服务器列表
+var formalServers = null;
+//服务器列表
+var serverData = null;
+// 选服接口返回的服务器列表数据
 var isGetServer = false;
 var isNewRole = 0;
 var isClickEnter = false;
@@ -21,7 +25,8 @@ var isLoadEgret = false;
 var isLoadMain = false;
 var versionFn = "gameVer";
 
-var isGG = false; //是否打开过公告
+var isGG = false;
+//是否打开过公告
 
 function showgonggao(e) {
     if (loginArg) {
@@ -34,11 +39,12 @@ function showgonggao(e) {
             data.randnum = Math.random();
             data.cmd = 102;
             data.pf = loginArg.platform;
-            if (isTest) { //内测
+            if (isTest) {
+                //内测
                 data.testserver = 1;
             }
 
-            loadHttp(url, function (result) {
+            loadHttp(url, function(result) {
                 $('#ggcontent').html("" + result);
             }, data);
         }
@@ -46,7 +52,7 @@ function showgonggao(e) {
 }
 
 function ready() {
-    $('.goplay').click(function () {
+    $('.goplay').click(function() {
         if (!ip || !loginArg) {
             return;
         }
@@ -55,14 +61,17 @@ function ready() {
             changeAccount.style.display = "none";
         }
 
-        if (state == 0) { //未开服
+        if (state == 0) {
+            //未开服
             return;
-        } else if (state == 2) { //维护中
+        } else if (state == 2) {
+            //维护中
             showgonggao(null);
             return;
         }
 
-        if (state == 0 && !whitelist) { //不是白名单
+        if (state == 0 && !whitelist) {
+            //不是白名单
             if ($("#alert").length <= 0) {
                 createAlert();
                 //维护时间
@@ -72,7 +81,7 @@ function ready() {
                 //data.cmd = 110;
                 //data.pf = loginArg.platform;
                 //data.zoneid = zoneid;
-                loadHttp(url, function (ret) {
+                loadHttp(url, function(ret) {
                     $('.alertContent').html("维护时间：<br>" + ret);
                 }, data);
             }
@@ -91,11 +100,11 @@ function ready() {
     })
     //公告
     $('#ggbtn').click(showgonggao);
-    $('#ggclose,#ggtopclose').click(function (e) {
+    $('#ggclose,#ggtopclose').click(function(e) {
         hidegg()
     });
     //选服页交互
-    $('.servername').click(function (e) {
+    $('.servername').click(function(e) {
         if (loginArg) {
             if (!isGetServer) {
                 isGetServer = true;
@@ -106,11 +115,12 @@ function ready() {
                 data.pf = loginArg.platform;
                 data.account = loginArg.account;
                 data.type = 2;
-                if (isTest) { //内测
+                if (isTest) {
+                    //内测
                     data.testserver = 1;
                 }
 
-                loadHttp(url, function (result) {
+                loadHttp(url, function(result) {
                     if (typeof result == 'string') {
                         serverData = JSON.parse(result);
                     } else {
@@ -125,7 +135,7 @@ function ready() {
 
     });
 
-    $('#sclosetitle,#sclose').click(function (e) {
+    $('#sclosetitle,#sclose').click(function(e) {
         showchoose();
     });
 
@@ -146,7 +156,7 @@ function initData() {
         //data.account = loginArg.account;
         //data.type = 4;
 
-        loadHttp(url, function (result) {
+        loadHttp(url, function(result) {
             if (typeof result == 'string') {
                 var info = JSON.parse(result);
             } else {
@@ -175,7 +185,7 @@ function initData() {
             $('.newname').html("最新服&nbsp;&nbsp;<font color='#00FF00'>" + max.alias + "</font>");
         }, data);
     } else {
-        setTimeout(function () {
+        setTimeout(function() {
             initData();
         }, 50);
     }
@@ -185,7 +195,6 @@ function initData() {
 function getPlatformType() {
     return 1;
 }
-
 
 function initLoginData() {
     if (loginArg) {
@@ -210,12 +219,13 @@ function initLoginData() {
                 data.pf = loginArg.platform;
                 data.account = loginArg.account;
                 data.type = 1;
-                if (isTest) { //内测
+                if (isTest) {
+                    //内测
                     data.testserver = 1;
                 }
             }
 
-            loadHttp(url, function (result) {
+            loadHttp(url, function(result) {
                 console.log(result);
                 if (typeof result == 'string') {
                     selectD = JSON.parse(result);
@@ -239,7 +249,7 @@ function initLoginData() {
             }, data);
         }
     } else {
-        setTimeout(function () {
+        setTimeout(function() {
             initLoginData();
         }, 100);
     }
@@ -255,11 +265,12 @@ function initNewServer() {
         data.pf = loginArg.platform;
         data.account = loginArg.account;
         data.type = 3;
-        if (isTest) { //内测
+        if (isTest) {
+            //内测
             data.testserver = 1;
         }
 
-        loadHttp(url, function (result) {
+        loadHttp(url, function(result) {
             if (result instanceof String) {
                 var serverData = JSON.parse(result);
             } else {
@@ -321,7 +332,7 @@ function hideAlert() {
 function createAlert() {
     var str = "<div id='alert' class='alert_none'><div class='alertContent'>维护时间：</div></div>";
     $('#server').append(str);
-    $('#alert').click(function (e) {
+    $('#alert').click(function(e) {
         hideAlert()
     });
 }
@@ -331,7 +342,7 @@ function initServerData() {
         return;
     zoneListData = [];
 
-    serverData.formal.sort(function (a, b) {
+    serverData.formal.sort(function(a, b) {
         return a.zoneid - b.zoneid;
     });
 
@@ -356,7 +367,7 @@ function initServerData() {
     $('.between').append(div);
 
     $('.between>div:first').addClass('between_sel');
-    $('.between>div').click(function (e) {
+    $('.between>div').click(function(e) {
         $('.between>div').removeClass('between_sel');
         $('.between>div').addClass('between_nosel');
         $(this).addClass('between_sel');
@@ -407,7 +418,7 @@ function updateSerList(str) {
     }
     $('.serversel').append(server_div);
 
-    $('.serversel>div').click(function (e) {
+    $('.serversel>div').click(function(e) {
         // 调样式
         $('.serversel>div').addClass('servernoselect');
         $('.serversel>div').removeClass('serverselect');
@@ -439,10 +450,10 @@ function loadHttp(url, callback, data) {
         type: "get",
         url: url,
         data: data,
-        success: function (result) {
+        success: function(result) {
             callback && callback(result);
         },
-        error: function () {
+        error: function() {
             callback && callback(null);
         }
     });
@@ -535,7 +546,8 @@ function runProgress() {
 }
 
 function isHideProgressBar() {
-    return true;//loginArg.platform == "ios";
+    return true;
+    //loginArg.platform == "ios";
 }
 
 //进度条
@@ -554,7 +566,8 @@ function showLoadProgress(text, pro, st) {
 //
 //是否新用户
 function isNewUser() {
-    if (recentServers) { //是否在最近登录列表中
+    if (recentServers) {
+        //是否在最近登录列表中
         for (var i = recentServers.length - 1; i >= 0; i--) {
             var data = recentServers[i];
             if (parseInt(zoneid) == parseInt(data.zoneid)) {
@@ -574,8 +587,7 @@ function bodyOnLoad() {
             loadOne = false;
             loadGameJS();
         }
-    } else {
-        //setTimeout(bodyOnLoad, 50);
+    } else {//setTimeout(bodyOnLoad, 50);
     }
 }
 //加版本号
@@ -605,7 +617,7 @@ function loadGameJS() {
     var script1 = document.createElement("script");
     script1.type = "text/javascript";
     //script1.src="https://hjcscdn-res.xcwlxcwl.cn/HuanJieChuanShuoQzone/libs/egretLib5_0_15V9.js"
-    script1.src="https://johnstonli.github.io/tbscase/debug/js/egretLib5_0_15V9.js"
+    script1.src = "https://johnstonli.github.io/tbscase/debug/js/egretLib5_0_15V9.js"
     document.body.appendChild(script1);
     script1.onload = function() {
         showLoadProgress("初始化游戏主程序", 35, 0);
@@ -613,7 +625,7 @@ function loadGameJS() {
         var script2 = document.createElement("script");
         script2.type = "text/javascript";
         //script2.src="https://hjcscdn-res.xcwlxcwl.cn/HuanJieChuanShuoQzone/V102/main.min.js"
-        script2.src="https://johnstonli.github.io/tbscase/debug/js/main.min.js"
+        script2.src = "https://johnstonli.github.io/tbscase/debug/js/main.min.js"
         document.body.appendChild(script2);
         script2.onload = function() {
             showLoadProgress("初始化游戏", 45, 0);
@@ -648,21 +660,27 @@ function runEgretMain() {
 
 function myBrowser() {
     try {
-        var userAgent = navigator.userAgent; //取得浏览器的userAgent字符串
+        var userAgent = navigator.userAgent;
+        //取得浏览器的userAgent字符串
         var isOpera = userAgent.indexOf("Presto") > -1;
-        if (isOpera) { //判断是否Opera内核
+        if (isOpera) {
+            //判断是否Opera内核
             return "Opera"
         }
-        if (userAgent.indexOf("Firefox") > -1) { //判断是否Firefox内核
+        if (userAgent.indexOf("Firefox") > -1) {
+            //判断是否Firefox内核
             return "FF";
         }
-        if (userAgent.indexOf("AppleWebKit") > -1) { //判断是否谷歌内核
+        if (userAgent.indexOf("AppleWebKit") > -1) {
+            //判断是否谷歌内核
             return "Chrome";
         }
-        if (userAgent.indexOf("Safari") > -1) { //判断是否Safari内核
+        if (userAgent.indexOf("Safari") > -1) {
+            //判断是否Safari内核
             return "Safari";
         }
-        if (userAgent.indexOf("Trident") > -1) { //判断是否IE内核
+        if (userAgent.indexOf("Trident") > -1) {
+            //判断是否IE内核
             return "IE";
         }
         if (userAgent.indexOf('Android') > -1 || userAgent.indexOf('Linux') > -1) {
