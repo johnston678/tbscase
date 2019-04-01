@@ -240,4 +240,5 @@ entityMap = {
        clubs: "♣",
        hearts: "♥",
        diams: "♦"
-};
+   };
+   

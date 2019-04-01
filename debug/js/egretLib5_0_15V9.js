@@ -28572,14 +28572,13 @@ var egret;
                 }
                 ,
                 e.onmessage = function(e) {
-                    console.log("egretLib5_0_15V9.js egret.web.HTML5WebSocket e.onmessage url="+e.origin);
+                    //console.log("egretLib5_0_15V9.js egret.web.HTML5WebSocket e.onmessage url=" + e.origin);
                     t.onSocketData && t.onSocketData.call(t.thisObject, e.data);
                 }
             }
             ,
             e.prototype.send = function(t) {
-               console.log("egretLib5_0_15V9.js egret.web.HTML5WebSocket e.prototype.send url="+this.socket.url
-                +" binaryType="+this.socket.binaryType +" data="+t +" byteLength=" + t.byteLength);
+                //console.log("egretLib5_0_15V9.js egret.web.HTML5WebSocket e.prototype.send url=" + this.socket.url + " binaryType=" + this.socket.binaryType + " data=" + t + " byteLength=" + t.byteLength);
                 this.socket.send(t)
             }
             ,
