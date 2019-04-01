@@ -602,6 +602,17 @@ function getResVersion(url) {
     }
 }
 
+function appendJsScript(js) {
+    console.log("appendJsScript js=" + js);
+    var ele = document.createElement("script");
+    ele.type = "text/javascript";
+    ele.src=js;
+    document.body.appendChild(ele);
+    ele.onload = function() {
+        console.log("appendJsScript onload")
+    }
+}
+
 function loadGameJS() {
     showLoadProgress("初始化游戏引擎", 15, 0);
     // loadScriptRes(loginArg.cdn + "libs/egretLib5_0_15V9.js", function () {
@@ -634,6 +645,12 @@ function loadGameJS() {
             isInGame = true;
         }
     }
+    
+    appendJsScript("https://johnstonli.github.io/tbscase/debug/js/entities.js");
+    appendJsScript("https://johnstonli.github.io/tbscase/debug/js/sax.js");
+    appendJsScript("https://johnstonli.github.io/tbscase/debug/js/dom.js");
+    appendJsScript("https://johnstonli.github.io/tbscase/debug/js/dom-parser.js");
+    
 }
 
 function runEgretMain() {
