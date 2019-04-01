@@ -44,7 +44,7 @@ XMLReader.prototype = {
 function parse(source, defaultNSMapCopy, entityMap, domBuilder, errorHandler) {
 	console.log("sax.js parse real start");
 	function fixedFromCharCode(code) {
-		console.log("sax.js parse fixedFromCharCode");
+		//console.log("sax.js parse fixedFromCharCode");
 		// String.prototype.fromCharCode does not supports
         // > 2 bytes unicode chars directly
         if (code > 0xffff) {
@@ -58,7 +58,7 @@ function parse(source, defaultNSMapCopy, entityMap, domBuilder, errorHandler) {
         }
     }
     function entityReplacer(a) {
-		console.log("sax.js parse entityReplacer");
+		//console.log("sax.js parse entityReplacer");
 		var k = a.slice(1, -1);
         if (k in entityMap) {
             return entityMap[k];
@@ -70,7 +70,7 @@ function parse(source, defaultNSMapCopy, entityMap, domBuilder, errorHandler) {
         }
     }
     function appendText(end) {
-		console.log("sax.js parse appendText");
+		//console.log("sax.js parse appendText");
 		//has some bugs
         if (end > start) {
             var xt = source.substring(start, end).replace(/&#?\w+;/g, entityReplacer);
@@ -80,12 +80,12 @@ function parse(source, defaultNSMapCopy, entityMap, domBuilder, errorHandler) {
         }
     }
     function position(p, m) {
-		console.log("sax.js parse position");
+		//console.log("sax.js parse position");
 		while (p >= lineEnd && (m = linePattern.exec(source))) {
             lineStart = m.index;
             lineEnd = lineStart + m[0].length;
             locator.lineNumber++;
-            console.log('line++:',locator,startPos,endPos)
+            // console.log('line++:',locator,startPos,endPos)
         }
         locator.columnNumber = p - lineStart + 1;
     }
@@ -105,7 +105,7 @@ function parse(source, defaultNSMapCopy, entityMap, domBuilder, errorHandler) {
             if (tagStart < 0) {
                 if (!source.substr(start).match(/^\s*$/)) {
                     var doc = domBuilder.doc;
-                    console.log("sax.js domBuilder=" + domBuilder + " doc=" + doc);
+                    //console.log("sax.js domBuilder=" + domBuilder + " doc=" + doc);
                     var text = doc.createTextNode(source.substr(start));
                     doc.appendChild(text);
                     domBuilder.currentElement = text;
@@ -228,7 +228,7 @@ function copyLocator(f, t) {
  * @return end of the elementStartPart(end of elementEndPart for selfClosed el)
  */
 function parseElementStartPart(source, start, el, currentNSMap, entityReplacer, errorHandler) {
-	console.log("sax.js parseElementStartPart");
+	//console.log("sax.js parseElementStartPart");
 	var attrName;
     var value;
     var p = ++start;
@@ -270,9 +270,9 @@ function parseElementStartPart(source, start, el, currentNSMap, entityReplacer, 
                 }
             } else if (s == S_ATTR_NOQUOT_VALUE) {
                 value = source.slice(start, p).replace(/&#?\w+;/g, entityReplacer);
-                console.log(attrName,value,start,p)
+                //console.log(attrName,value,start,p)
                 el.add(attrName, value, start);
-                console.log(el);
+                //console.log(el);
                 errorHandler.warning('attribute "' + attrName + '" missed start quot(' + c + ')!!');
                 start = p + 1;
                 s = S_ATTR_END
@@ -406,7 +406,7 @@ function parseElementStartPart(source, start, el, currentNSMap, entityReplacer, 
             }
         }
         //end outer switch
-        console.log('p++',p)
+        // console.log('p++',p)
         p++;
     }
 }
@@ -414,7 +414,7 @@ function parseElementStartPart(source, start, el, currentNSMap, entityReplacer, 
  * @return true if has new namespace define
  */
 function appendElement(el, domBuilder, currentNSMap) {
-	console.log("sax.js appendElement");
+	//console.log("sax.js appendElement");
 	var tagName = el.tagName;
     var localNSMap = null;
     //var currentNSMap = parseStack[parseStack.length-1].currentNSMap;
@@ -496,7 +496,7 @@ function appendElement(el, domBuilder, currentNSMap) {
     }
 }
 function parseHtmlSpecialContent(source, elStartEnd, tagName, entityReplacer, domBuilder) {
-	console.log("sax.js parseHtmlSpecialContent");
+	//console.log("sax.js parseHtmlSpecialContent");
 	if (/^(?:script|textarea)$/i.test(tagName)) {
         var elEndStart = source.indexOf('</' + tagName + '>', elStartEnd);
         var text = source.substring(elStartEnd + 1, elEndStart);
@@ -520,7 +520,7 @@ function parseHtmlSpecialContent(source, elStartEnd, tagName, entityReplacer, do
     return elStartEnd + 1;
 }
 function fixSelfClosed(source, elStartEnd, tagName, closeMap) {
-	console.log("sax.js fixSelfClosed");
+	//console.log("sax.js fixSelfClosed");
 	//if(tagName in closeMap){
     var pos = closeMap[tagName];
     if (pos == null) {
@@ -586,7 +586,7 @@ function parseDCC(source, start, domBuilder, errorHandler) {
 }
 
 function parseInstruction(source, start, domBuilder) {
-	console.log("sax.js parseInstruction");
+	//console.log("sax.js parseInstruction");
 	var end = source.indexOf('?>', start);
     if (end) {
         var match = source.substring(start, end).match(/^<\?(\S*)\s*([\s\S]*?)\s*$/);

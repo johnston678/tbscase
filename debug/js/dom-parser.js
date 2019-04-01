@@ -99,7 +99,7 @@ DOMHandler.prototype = {
         }
     },
     startElement: function(namespaceURI, localName, qName, attrs) {
-		console.log("dom-parser.js startElement");
+		//console.log("dom-parser.js startElement");
 		var doc = this.doc;
         var el = doc.createElementNS(namespaceURI, qName || localName);
         var len = attrs.length;
@@ -118,7 +118,7 @@ DOMHandler.prototype = {
         }
     },
     endElement: function(namespaceURI, localName, qName) {
-		console.log("dom-parser.js endElement");
+		//console.log("dom-parser.js endElement");
 		var current = this.currentElement
         var tagName = current.tagName;
         this.currentElement = current.parentNode;
