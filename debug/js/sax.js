@@ -33,16 +33,16 @@ function XMLReader() {
 XMLReader.prototype = {
     parse: function(source, defaultNSMap, entityMap) {
         var domBuilder = this.domBuilder;
-        console.log("sax.js parse start source="+source);
+        //console.log("sax.js parse start source="+source);
         domBuilder.startDocument();
         _copy(defaultNSMap, defaultNSMap = {})
         parse(source, defaultNSMap, entityMap, domBuilder, this.errorHandler);
 		domBuilder.endDocument();
-		console.log("sax.js parse end");
+		//console.log("sax.js parse end");
     }
 }
 function parse(source, defaultNSMapCopy, entityMap, domBuilder, errorHandler) {
-	console.log("sax.js parse real start");
+	//console.log("sax.js parse real start");
 	function fixedFromCharCode(code) {
 		//console.log("sax.js parse fixedFromCharCode");
 		// String.prototype.fromCharCode does not supports

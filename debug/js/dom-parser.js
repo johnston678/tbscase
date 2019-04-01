@@ -92,7 +92,7 @@ function position(locator, node) {
  */
 DOMHandler.prototype = {
     startDocument: function() {
-		console.log("dom-parser.js startDocument");
+		//console.log("dom-parser.js startDocument");
 		this.doc = new DOMImplementation().createDocument(null, null, null);
         if (this.locator) {
             this.doc.documentURI = this.locator.systemId;

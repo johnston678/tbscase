@@ -298,7 +298,7 @@ DOMImplementation.prototype = {
     // Introduced in DOM Level 2:
     createDocument: function(namespaceURI, qualifiedName, doctype) {
         // raises:INVALID_CHARACTER_ERR,NAMESPACE_ERR,WRONG_DOCUMENT_ERR
-        console.log("dom.js createDocument");
+        //console.log("dom.js createDocument");
         var doc = new Document();
         doc.implementation = this;
         doc.childNodes = new NodeList();
@@ -1149,7 +1149,7 @@ function importNode(doc, node, deep) {
     if (deep) {
         var child = node.firstChild;
         while (child) {
-            console.log("dom.js importNode");
+            //console.log("dom.js importNode");
             node2.appendChild(importNode(doc, child, deep));
             child = child.nextSibling;
         }
@@ -1190,7 +1190,7 @@ function cloneNode(doc, node, deep) {
     if (deep) {
         var child = node.firstChild;
         while (child) {
-            console.log("dom.js cloneNode");
+            //console.log("dom.js cloneNode");
             node2.appendChild(cloneNode(doc, child, deep));
             child = child.nextSibling;
         }
@@ -1222,7 +1222,7 @@ try {
                         this.removeChild(this.firstChild);
                     }
                     if (data || String(data)) {
-                        console.log("dom.js set");
+                        //console.log("dom.js set");
                         this.appendChild(this.ownerDocument.createTextNode(data));
                     }
                     break;

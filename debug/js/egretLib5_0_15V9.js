@@ -12771,7 +12771,7 @@ var egret;
             for (var t = s.parseFromString(e, "text/xml"), r = t.childNodes.length, n = 0; r > n; n++) {
                 var a = t.childNodes[n];
                 if (1 == a.nodeType){
-                    console.log("egretLib5_0_15V9.js parseFromString handle i a="+a+" nodeName="+a.nodeName);
+                    //console.log("egretLib5_0_15V9.js parseFromString handle i a="+a+" nodeName="+a.nodeName);
                     return i(a, null);
                 }
             }
@@ -12779,7 +12779,7 @@ var egret;
         }
 
         function i(e, t) {
-            console.log("egretLib5_0_15V9.js i function start e="+e+" t="+t);
+            //console.log("egretLib5_0_15V9.js i function start e="+e+" t="+t);
             if ("parsererror" == e.localName)
                 throw new Error(e.textContent);
             for (var r = new a(e.localName,t,e.prefix,e.namespaceURI,e.nodeName), n = e.attributes, s = r.attributes, l = n.length, c = 0; l > c; c++) {
@@ -12802,7 +12802,7 @@ var egret;
                 }
                 v && p.push(v)
             }
-            console.log("egretLib5_0_15V9.js i function end");
+            //console.log("egretLib5_0_15V9.js i function end");
             return r
         }
         var n = function() {
@@ -18042,10 +18042,11 @@ var eui;
                 this.delayAssignmentDic = {}
             }
             return e.prototype.$parseCode = function(t, e) {
-                var i = e ? e : "$exmlClass" + r++
-                  , n = eval
-                  , o = n(t)
-                  , s = !0;
+                //console.log("egretLib5_0_15V9.js e.prototype.$parseCode eval");
+                var i = e ? e : "$exmlClass" + r++;
+                var n = eval;
+                var o = n(t);
+                var s = !0;
                 if (s && o) {
                     egret.registerClass(o, i);
                     for (var a = i.split("."), h = a.length, l = __global, u = 0; h - 1 > u; u++) {
@@ -18069,7 +18070,7 @@ var eui;
                 var s = o.toCode();
                 var a = null;
                 var h = eval;
-                console.log("egretLib5_0_15V9.js e.prototype.parse eval s="+s);
+                //console.log("egretLib5_0_15V9.js e.prototype.parse eval s="+s);
                 a = h(s);
                 if (i && a) {
                     egret.registerClass(a, n);
