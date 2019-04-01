@@ -18069,9 +18069,9 @@ var eui;
                 var s = o.toCode();
                 var a = null;
                 var h = eval;
-                console.log("egretLib5_0_15V9.js e.prototype.parse o="+o+" s="+s+" h="+h);
-                if (a = h(s),
-                i && a) {
+                console.log("egretLib5_0_15V9.js e.prototype.parse eval s="+s);
+                a = h(s);
+                if (i && a) {
                     egret.registerClass(a, n);
                     for (var l = n.split("."), u = l.length, p = __global, c = 0; u - 1 > c; c++) {
                         var d = l[c];
