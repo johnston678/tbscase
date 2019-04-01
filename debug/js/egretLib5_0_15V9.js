@@ -12569,6 +12569,8 @@ var egret;
             ,
             i.prototype.readOption = function(t, r) {
                 var i = {};
+                //johnstonli
+                t.setAttribute("data-frame-rate", "60");
                 i.entryClassName = t.getAttribute("data-entry-class"),
                 i.scaleMode = t.getAttribute("data-scale-mode") || e.StageScaleMode.NO_SCALE,
                 i.frameRate = +t.getAttribute("data-frame-rate") || 30,
