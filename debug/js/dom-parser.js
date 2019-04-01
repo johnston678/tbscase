@@ -92,13 +92,15 @@ function position(locator, node) {
  */
 DOMHandler.prototype = {
     startDocument: function() {
-        this.doc = new DOMImplementation().createDocument(null, null, null);
+		console.log("dom-parser.js startDocument");
+		this.doc = new DOMImplementation().createDocument(null, null, null);
         if (this.locator) {
             this.doc.documentURI = this.locator.systemId;
         }
     },
     startElement: function(namespaceURI, localName, qName, attrs) {
-        var doc = this.doc;
+		console.log("dom-parser.js startElement");
+		var doc = this.doc;
         var el = doc.createElementNS(namespaceURI, qName || localName);
         var len = attrs.length;
         appendDOMElement(this, el);
@@ -116,7 +118,8 @@ DOMHandler.prototype = {
         }
     },
     endElement: function(namespaceURI, localName, qName) {
-        var current = this.currentElement
+		console.log("dom-parser.js endElement");
+		var current = this.currentElement
         var tagName = current.tagName;
         this.currentElement = current.parentNode;
     },
