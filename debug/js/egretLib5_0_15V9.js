@@ -12770,18 +12770,21 @@ var egret;
         function r(e) {
             for (var t = s.parseFromString(e, "text/xml"), r = t.childNodes.length, n = 0; r > n; n++) {
                 var a = t.childNodes[n];
-                if (1 == a.nodeType)
-                    return i(a, null)
+                if (1 == a.nodeType){
+                    console.log("egretLib5_0_15V9.js parseFromString handle i a="+a+" nodeName="+a.nodeName);
+                    return i(a, null);
+                }
             }
             return null
         }
 
         function i(e, t) {
+            console.log("egretLib5_0_15V9.js i function start e="+e+" t="+t);
             if ("parsererror" == e.localName)
                 throw new Error(e.textContent);
             for (var r = new a(e.localName,t,e.prefix,e.namespaceURI,e.nodeName), n = e.attributes, s = r.attributes, l = n.length, c = 0; l > c; c++) {
-                var h = n[c]
-                  , u = h.name;
+                var h = n[c];
+                var u = h.name;
                 0 != u.indexOf("xmlns:") && (s[u] = h.value,
                 r["$" + u] = h.value)
             }
@@ -12799,6 +12802,7 @@ var egret;
                 }
                 v && p.push(v)
             }
+            console.log("egretLib5_0_15V9.js i function end");
             return r
         }
         var n = function() {
@@ -18061,10 +18065,11 @@ var eui;
                 e.attributes["class"] ? (n = e.attributes["class"],
                 delete e.attributes["class"],
                 i = !!n) : n = "$exmlClass" + r++;
-                var o = this.parseClass(e, n)
-                  , s = o.toCode()
-                  , a = null
-                  , h = eval;
+                var o = this.parseClass(e, n);
+                var s = o.toCode();
+                var a = null;
+                var h = eval;
+                console.log("egretLib5_0_15V9.js e.prototype.parse o="+o+" s="+s+" h="+h);
                 if (a = h(s),
                 i && a) {
                     egret.registerClass(a, n);
