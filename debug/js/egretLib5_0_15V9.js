@@ -12614,11 +12614,11 @@ var egret;
             i.prototype.updateScreenSize = function() {
                 var t = this.canvas;
                 if (!t.userTyping) {
-                    var r = this.playerOption
-                      , i = this.container.getBoundingClientRect()
-                      , n = 0
-                      , a = i.width
-                      , o = i.height;
+                    var r = this.playerOption;
+                    var i = this.container.getBoundingClientRect();
+                    var n = 0;
+                    var a = i.width;
+                    var o = i.height;
                     if (0 != a && 0 != o) {
                         i.top < 0 && (o += i.top,
                         n = -i.top);
@@ -12651,14 +12651,14 @@ var egret;
                         "canvas" == e.Capabilities.$renderMode && (x = Math.ceil(x),
                         b = Math.ceil(b));
                         var w = new e.Matrix;
-                        w.scale(y / x, m / b),
+                        w.scale(y / x, m / b);
                         w.rotate(v * Math.PI / 180);
                         var E = "matrix(" + w.a + "," + w.b + "," + w.c + "," + w.d + "," + w.tx + "," + w.ty + ")";
-                        t.style[e.web.getPrefixStyleName("transform")] = E,
-                        e.sys.DisplayList.$setCanvasScale(x, b),
-                        this.webTouchHandler.updateScaleMode(y, m, v),
-                        this.webInput.$updateSize(),
-                        this.player.updateStageSize(d, p)
+                        t.style[e.web.getPrefixStyleName("transform")] = E;
+                        e.sys.DisplayList.$setCanvasScale(x, b);
+                        this.webTouchHandler.updateScaleMode(y, m, v);
+                        this.webInput.$updateSize();
+                        this.player.updateStageSize(d, p);
                     }
                 }
             }
