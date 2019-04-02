@@ -10328,23 +10328,23 @@ var __reflect = this && this.__reflect || function(e, t, r) {
             return __extends(r, t),
             r.prototype.addFps = function() {
                 var e = document.createElement("div");
-                e.style.display = "inline-block",
-                this.containerFps = e,
+                e.style.display = "inline-block";
+                this.containerFps = e;
                 this.container.appendChild(e);
                 var t = document.createElement("div");
-                t.style.paddingBottom = "2px",
-                this.fps = t,
-                this.containerFps.appendChild(t),
+                t.style.paddingBottom = "2px";
+                this.fps = t;
+                this.containerFps.appendChild(t);
                 t.innerHTML = "0 FPS " + this.renderMode + "<br/>min0 max0 avg0";
-                var r = document.createElement("canvas");
-                this.containerFps.appendChild(r),
-                r.width = this.WIDTH,
-                r.height = this.HEIGHT,
-                this.canvasFps = r;
-                var i = r.getContext("2d");
-                this.contextFps = i,
-                i.fillStyle = this.bgCanvasColor,
-                i.fillRect(0, 0, this.WIDTH, this.HEIGHT);
+                // var r = document.createElement("canvas");
+                // this.containerFps.appendChild(r);
+                // r.width = this.WIDTH;
+                // r.height = this.HEIGHT;
+                // this.canvasFps = r;
+                // var i = r.getContext("2d");
+                // this.contextFps = i;
+                // i.fillStyle = this.bgCanvasColor;
+                // i.fillRect(0, 0, this.WIDTH, this.HEIGHT);
                 var n = document.createElement("div");
                 this.divDatas = n,
                 this.containerFps.appendChild(n);
@@ -10362,20 +10362,20 @@ var __reflect = this && this.__reflect || function(e, t, r) {
                 var l = document.createElement("div");
                 this.divCost = l,
                 l.innerHTML = '<font  style="color:' + this.cost1Color + '">0<font/> <font  style="color:' + this.cost2Color + '">0<font/> <font  style="color:' + this.cost3Color + '">0<font/>',
-                o.appendChild(l),
-                r = document.createElement("canvas"),
-                this.canvasCost = r,
-                this.containerFps.appendChild(r),
-                r.width = this.WIDTH,
-                r.height = this.HEIGHT,
-                i = r.getContext("2d"),
-                this.contextCost = i,
-                i.fillStyle = this.bgCanvasColor,
-                i.fillRect(0, 0, this.WIDTH, this.HEIGHT),
-                i.fillStyle = "#000000",
-                i.fillRect(this.WIDTH_COST, 0, 1, this.HEIGHT),
-                i.fillRect(2 * this.WIDTH_COST + 1, 0, 1, this.HEIGHT),
-                this.fpsHeight = this.container.offsetHeight
+                o.appendChild(l);
+                // r = document.createElement("canvas");
+                // this.canvasCost = r;
+                // this.containerFps.appendChild(r);
+                // r.width = this.WIDTH;
+                // r.height = this.HEIGHT;
+                // i = r.getContext("2d");
+                // this.contextCost = i;
+                // i.fillStyle = this.bgCanvasColor;
+                // i.fillRect(0, 0, this.WIDTH, this.HEIGHT);
+                // i.fillStyle = "#000000";
+                // i.fillRect(this.WIDTH_COST, 0, 1, this.HEIGHT);
+                // i.fillRect(2 * this.WIDTH_COST + 1, 0, 1, this.HEIGHT);
+                this.fpsHeight = this.container.offsetHeight;
             }
             ,
             r.prototype.addLog = function() {
@@ -10400,8 +10400,8 @@ var __reflect = this && this.__reflect || function(e, t, r) {
                 this.lastNumDirty = e.dirty,
                 this.arrFps.push(r),
                 this.arrCost.push([i, n, a]));
-                var o = 0
-                  , s = this.arrFps.length;
+                var o = 0;
+                var s = this.arrFps.length;
                 s > 101 && (s = 101,
                 this.arrFps.shift(),
                 this.arrCost.shift());
@@ -10410,43 +10410,44 @@ var __reflect = this && this.__reflect || function(e, t, r) {
                     o += u,
                     l > u ? l = u : u > c && (c = u)
                 }
-                var d = this.WIDTH
-                  , p = this.HEIGHT
-                  , f = this.contextFps;
-                f.drawImage(this.canvasFps, 1, 0, d - 1, p, 0, 0, d - 1, p),
-                f.fillStyle = this.bgCanvasColor,
-                f.fillRect(d - 1, 0, 1, p);
+                var d = this.WIDTH;
+                var p = this.HEIGHT;
+                //var f = this.contextFps;
+                //f.drawImage(this.canvasFps, 1, 0, d - 1, p, 0, 0, d - 1, p),
+                //f.fillStyle = this.bgCanvasColor,
+                //f.fillRect(d - 1, 0, 1, p);
                 var g = Math.floor(r / 60 * 20);
-                1 > g && (g = 1),
-                f.fillStyle = this.fpsFrontColor,
-                f.fillRect(d - 1, 20 - g, 1, g);
+                1 > g && (g = 1);
+                // f.fillStyle = this.fpsFrontColor;
+                // f.fillRect(d - 1, 20 - g, 1, g);
                 var v = this.WIDTH_COST;
-                f = this.contextCost,
-                f.drawImage(this.canvasCost, 1, 0, v - 1, p, 0, 0, v - 1, p),
-                f.drawImage(this.canvasCost, v + 2, 0, v - 1, p, v + 1, 0, v - 1, p),
-                f.drawImage(this.canvasCost, 2 * v + 3, 0, v - 1, p, 2 * v + 2, 0, v - 1, p);
+                // f = this.contextCost;
+                // f.drawImage(this.canvasCost, 1, 0, v - 1, p, 0, 0, v - 1, p),
+                // f.drawImage(this.canvasCost, v + 2, 0, v - 1, p, v + 1, 0, v - 1, p),
+                // f.drawImage(this.canvasCost, 2 * v + 3, 0, v - 1, p, 2 * v + 2, 0, v - 1, p);
                 var y = Math.floor(i / 2);
                 1 > y ? y = 1 : y > 20 && (y = 20);
                 var m = Math.floor(n / 2);
                 1 > m ? m = 1 : m > 20 && (m = 20);
                 var x = Math.floor(a / 2);
-                1 > x ? x = 1 : x > 20 && (x = 20),
-                f.fillStyle = this.bgCanvasColor,
-                f.fillRect(v - 1, 0, 1, p),
-                f.fillRect(2 * v, 0, 1, p),
-                f.fillRect(3 * v + 1, 0, 1, p),
-                f.fillStyle = this.cost1Color,
-                f.fillRect(v - 1, 20 - y, 1, y),
-                f.fillStyle = this.cost2Color,
-                f.fillRect(2 * v, 20 - m, 1, m),
-                f.fillStyle = this.cost3Color,
-                f.fillRect(3 * v + 1, 20 - x, 1, x);
-                var b = Math.floor(o / s)
-                  , w = r + " FPS " + this.renderMode;
-                this.showPanle && (w += "<br/>min" + l + " max" + c + " avg" + b,
-                this.divDraw.innerHTML = this.lastNumDraw + "<br/>" + this.lastNumDirty + "%<br/>",
-                this.divCost.innerHTML = '<font  style="color:#18fefe">' + i + '<font/> <font  style="color:#ffff00">' + n + '<font/> <font  style="color:#ff0000">' + a + "<font/>"),
-                this.fps.innerHTML = w
+                1 > x ? x = 1 : x > 20 && (x = 20);
+                // f.fillStyle = this.bgCanvasColor,
+                // f.fillRect(v - 1, 0, 1, p),
+                // f.fillRect(2 * v, 0, 1, p),
+                // f.fillRect(3 * v + 1, 0, 1, p),
+                // f.fillStyle = this.cost1Color,
+                // f.fillRect(v - 1, 20 - y, 1, y),
+                // f.fillStyle = this.cost2Color,
+                // f.fillRect(2 * v, 20 - m, 1, m),
+                // f.fillStyle = this.cost3Color,
+                // f.fillRect(3 * v + 1, 20 - x, 1, x);
+                var b = Math.floor(o / s);
+                // var w = r + " FPS " + this.renderMode;
+                // this.showPanle && (w += "<br/>min" + l + " max" + c + " avg" + b,
+                // this.divDraw.innerHTML = this.lastNumDraw + "<br/>" + this.lastNumDirty + "%<br/>",
+                // this.divCost.innerHTML = '<font  style="color:#18fefe">' + i + '<font/> <font  style="color:#ffff00">' + n + '<font/> <font  style="color:#ff0000">' + a + "<font/>"),
+                // this.fps.innerHTML = w
+                console.log("FPS avg="+b);
             }
             ,
             r.prototype.updateInfo = function(e) {
