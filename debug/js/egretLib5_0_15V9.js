@@ -12629,11 +12629,11 @@ var egret;
                           , h = s ? a : o;
                         e.Capabilities.$boundingClientWidth = c,
                         e.Capabilities.$boundingClientHeight = h;
-                        var u = e.sys.screenAdapter.calculateStageSize(this.stage.$scaleMode, c, h, r.contentWidth, r.contentHeight)
-                          , d = u.stageWidth
-                          , p = u.stageHeight
-                          , f = u.displayWidth
-                          , g = u.displayHeight;
+                        var u = e.sys.screenAdapter.calculateStageSize(this.stage.$scaleMode, c, h, r.contentWidth, r.contentHeight);
+                        var d = u.stageWidth;
+                        var p = u.stageHeight;
+                        var f = u.displayWidth;
+                        var g = u.displayHeight;
                         t.style[e.web.getPrefixStyleName("transformOrigin")] = "0% 0% 0px",
                         t.width != d && (t.width = d),
                         t.height != p && (t.height = p);
