@@ -12619,14 +12619,16 @@ var egret;
                     var n = 0;
                     var a = i.width;
                     var o = i.height;
+                    //johnstonli
+                    o = 732;
                     if (0 != a && 0 != o) {
                         i.top < 0 && (o += i.top,
                         n = -i.top);
                         var s = !1
                           , l = this.stage.$orientation;
                         l != e.OrientationMode.AUTO && (s = l != e.OrientationMode.PORTRAIT && o > a || l == e.OrientationMode.PORTRAIT && a > o);
-                        var c = s ? o : a
-                          , h = s ? a : o;
+                        var c = s ? o : a;
+                        var h = s ? a : o;
                         e.Capabilities.$boundingClientWidth = c,
                         e.Capabilities.$boundingClientHeight = h;
                         var u = e.sys.screenAdapter.calculateStageSize(this.stage.$scaleMode, c, h, r.contentWidth, r.contentHeight);
