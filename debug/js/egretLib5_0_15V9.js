@@ -10442,11 +10442,13 @@ var __reflect = this && this.__reflect || function(e, t, r) {
                 // f.fillStyle = this.cost3Color,
                 // f.fillRect(3 * v + 1, 20 - x, 1, x);
                 var b = Math.floor(o / s);
-                // var w = r + " FPS " + this.renderMode;
-                // this.showPanle && (w += "<br/>min" + l + " max" + c + " avg" + b,
-                // this.divDraw.innerHTML = this.lastNumDraw + "<br/>" + this.lastNumDirty + "%<br/>",
-                // this.divCost.innerHTML = '<font  style="color:#18fefe">' + i + '<font/> <font  style="color:#ffff00">' + n + '<font/> <font  style="color:#ff0000">' + a + "<font/>"),
-                // this.fps.innerHTML = w
+                var w = r + " FPS " + this.renderMode;
+                if(this.showPanle) {
+                    w += "<br/>min" + l + " max" + c + " avg" + b;
+                    this.divDraw.innerHTML = this.lastNumDraw + "<br/>" + this.lastNumDirty + "%<br/>";
+                    this.divCost.innerHTML = '<font  style="color:#18fefe">' + i + '<font/> <font  style="color:#ffff00">' + n + '<font/> <font  style="color:#ff0000">' + a + "<font/>";
+                } 
+                this.fps.innerHTML = w;
                 console.log("FPS avg="+b);
             }
             ,
