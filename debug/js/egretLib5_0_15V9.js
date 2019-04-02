@@ -10328,7 +10328,8 @@ var __reflect = this && this.__reflect || function(e, t, r) {
             return __extends(r, t),
             r.prototype.addFps = function() {
                 var e = document.createElement("div");
-                e.style.display = "inline-block";
+                e.style.display = "none";
+                e.id = "fpsId"
                 this.containerFps = e;
                 this.container.appendChild(e);
                 var t = document.createElement("div");
@@ -10345,24 +10346,24 @@ var __reflect = this && this.__reflect || function(e, t, r) {
                 // this.contextFps = i;
                 // i.fillStyle = this.bgCanvasColor;
                 // i.fillRect(0, 0, this.WIDTH, this.HEIGHT);
-                var n = document.createElement("div");
-                this.divDatas = n,
-                this.containerFps.appendChild(n);
-                var a = document.createElement("div");
-                a.style["float"] = "left",
-                a.innerHTML = "Draw<br/>Dirty<br/>Cost",
-                n.appendChild(a);
-                var o = document.createElement("div");
-                o.style.paddingLeft = a.offsetWidth + 20 + "px",
-                n.appendChild(o);
-                var s = document.createElement("div");
-                this.divDraw = s,
-                s.innerHTML = "0<br/>0<br/>",
-                o.appendChild(s);
-                var l = document.createElement("div");
-                this.divCost = l,
-                l.innerHTML = '<font  style="color:' + this.cost1Color + '">0<font/> <font  style="color:' + this.cost2Color + '">0<font/> <font  style="color:' + this.cost3Color + '">0<font/>',
-                o.appendChild(l);
+                // var n = document.createElement("div");
+                // this.divDatas = n,
+                // this.containerFps.appendChild(n);
+                // var a = document.createElement("div");
+                // a.style["float"] = "left",
+                // a.innerHTML = "Draw<br/>Dirty<br/>Cost",
+                // n.appendChild(a);
+                // var o = document.createElement("div");
+                // o.style.paddingLeft = a.offsetWidth + 20 + "px",
+                // n.appendChild(o);
+                // var s = document.createElement("div");
+                // this.divDraw = s,
+                // s.innerHTML = "0<br/>0<br/>",
+                // o.appendChild(s);
+                // var l = document.createElement("div");
+                // this.divCost = l,
+                // l.innerHTML = '<font  style="color:' + this.cost1Color + '">0<font/> <font  style="color:' + this.cost2Color + '">0<font/> <font  style="color:' + this.cost3Color + '">0<font/>',
+                // o.appendChild(l);
                 // r = document.createElement("canvas");
                 // this.canvasCost = r;
                 // this.containerFps.appendChild(r);
@@ -10445,11 +10446,11 @@ var __reflect = this && this.__reflect || function(e, t, r) {
                 var w = r + " FPS " + this.renderMode;
                 if(this.showPanle) {
                     w += "<br/>min" + l + " max" + c + " avg" + b;
-                    this.divDraw.innerHTML = this.lastNumDraw + "<br/>" + this.lastNumDirty + "%<br/>";
-                    this.divCost.innerHTML = '<font  style="color:#18fefe">' + i + '<font/> <font  style="color:#ffff00">' + n + '<font/> <font  style="color:#ff0000">' + a + "<font/>";
+                    //this.divDraw.innerHTML = this.lastNumDraw + "<br/>" + this.lastNumDirty + "%<br/>";
+                    //this.divCost.innerHTML = '<font  style="color:#18fefe">' + i + '<font/> <font  style="color:#ffff00">' + n + '<font/> <font  style="color:#ff0000">' + a + "<font/>";
                 } 
                 this.fps.innerHTML = w;
-                console.log("FPS avg="+b);
+                console.log("FPS avg="+w);
             }
             ,
             r.prototype.updateInfo = function(e) {
