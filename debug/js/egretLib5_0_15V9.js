@@ -5179,12 +5179,12 @@ var egret;
             ,
             s.prototype.updateStageSize = function(e, i) {
                 var r = this.stage;
-                r.$stageWidth = e,
-                r.$stageHeight = i,
-                this.screenDisplayList.setClipRect(e, i),
-                this.stageDisplayList && this.stageDisplayList.setClipRect(e, i),
-                r.dispatchEventWith(t.Event.RESIZE),
-                r.$invalidate(!0)
+                r.$stageWidth = e;
+                r.$stageHeight = i;
+                this.screenDisplayList.setClipRect(e, i);
+                this.stageDisplayList && this.stageDisplayList.setClipRect(e, i);
+                r.dispatchEventWith(t.Event.RESIZE);
+                r.$invalidate(!0);
             }
             ,
             s
