@@ -12575,7 +12575,7 @@ var egret;
                 var i = {};
                 //johnstonli 
                 t.setAttribute("data-frame-rate", "60");
-                t.setAttribute("data-show-fps", "true");
+                t.setAttribute("data-show-fps", "false");
                 //johnstonli
                 i.entryClassName = t.getAttribute("data-entry-class"),
                 i.scaleMode = t.getAttribute("data-scale-mode") || e.StageScaleMode.NO_SCALE,
@@ -12620,6 +12620,7 @@ var egret;
                     var a = i.width;
                     var o = i.height;
                     //johnstonli
+                    a = 412;
                     o = 732;
                     if (0 != a && 0 != o) {
                         i.top < 0 && (o += i.top,
