@@ -12620,8 +12620,9 @@ var egret;
                     var a = i.width;
                     var o = i.height;
                     //johnstonli
-                    a = 412;
-                    o = 732;
+                    //a = 412;
+                    //o = 732;
+                    //johnstonli
                     if (0 != a && 0 != o) {
                         i.top < 0 && (o += i.top,
                         n = -i.top);
